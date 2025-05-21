@@ -13,6 +13,7 @@ junitVersion = "1.2.1"
 kotlin = "2.0.21"
 lifecycleRuntimeKtx = "2.9.0"
 navigationCompose = "2.9.0"
+runtimeLivedata = "1.8.1"
 
 
 [libraries]
@@ -37,6 +38,7 @@ hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hil
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "conversorGson" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "conversorGson" }
+androidx-runtime-livedata = { group = "androidx.compose.runtime", name = "runtime-livedata", version.ref = "runtimeLivedata" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
