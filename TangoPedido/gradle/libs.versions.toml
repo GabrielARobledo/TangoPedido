@@ -2,15 +2,18 @@
 activityCompose = "1.10.1"
 agp = "8.9.3"
 composeBom = "2025.05.00"
+conversorGson = "2.9.0"
 coreKtx = "1.16.0"
 espressoCore = "3.6.1"
-hiltAndroid = "2.53.1"
+hiltAndroid = "2.50"
 hiltAndroidGradlePlugin = "2.48"
 hiltNavigationCompose = "1.2.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 kotlin = "2.0.21"
 lifecycleRuntimeKtx = "2.9.0"
+navigationCompose = "2.9.0"
+
 
 [libraries]
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
@@ -19,6 +22,7 @@ androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = 
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 androidx-ui = { group = "androidx.compose.ui", name = "ui" }
@@ -31,6 +35,8 @@ hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltA
 hilt-android-gradle-plugin = { module = "com.google.dagger:hilt-android-gradle-plugin", version.ref = "hiltAndroidGradlePlugin" }
 hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hiltAndroidGradlePlugin" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
+retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "conversorGson" }
+converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "conversorGson" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

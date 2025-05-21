@@ -50,6 +50,7 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.navigation.compose)
 
     // Compose BOM para versiones alineadas de Compose
     implementation(platform(libs.androidx.compose.bom))
@@ -64,6 +65,10 @@ dependencies {
     kapt(libs.hilt.compiler)
     implementation(libs.hilt.android)
     implementation(libs.androidx.hilt.navigation.compose)
+
+    // Retrofit
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
 
     // Testing
     testImplementation(libs.junit)

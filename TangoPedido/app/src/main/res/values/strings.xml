@@ -1,3 +1,8 @@
 <resources>
+    -- App
     <string name="app_name">Tango Pedido</string>
+
+    -- LoginScreen
+    <string name="login_key">Llave</string>
+    <string name="login_pass">Clave</string>
 </resources>
