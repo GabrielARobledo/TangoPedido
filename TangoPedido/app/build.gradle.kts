@@ -31,6 +31,14 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            buildConfigField("String", "API_BASE_URL", "\"${property("API_BASE_URL_RELEASE")}\"")
+            buildConfigField("String", "API_TOKEN", "\"${property("API_TOKEN_RELEASE")}\"")
+            buildConfigField("int", "API_COMPANY", property("API_COMPANY_RELEASE").toString())
+        }
+        debug {
+            buildConfigField("String", "API_BASE_URL", "\"${property("API_BASE_URL_DEBUG")}\"")
+            buildConfigField("String", "API_TOKEN", "\"${property("API_TOKEN_DEBUG")}\"")
+            buildConfigField("int", "API_COMPANY", property("API_COMPANY_DEBUG").toString())
         }
     }
     compileOptions {
@@ -42,6 +50,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 

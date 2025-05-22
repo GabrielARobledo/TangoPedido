@@ -34,9 +34,5 @@ fun LoginScreen(
 
         CustomTextField(label = stringResource(R.string.login_pass), value = texto2) {
         }
-
-        PrimaryButton("Pulsame") {
-            mainViewModel.loginIn()
-        }
     }
 }

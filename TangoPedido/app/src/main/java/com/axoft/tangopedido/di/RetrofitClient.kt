@@ -1,6 +1,8 @@
 package com.axoft.tangopedido.di
 
-import com.axoft.tangopedido.data.remote.api.PaisClient
+import com.axoft.tangopedido.BuildConfig
+import com.axoft.tangopedido.data.remote.api.articulo.ArticuloClient
+import com.axoft.tangopedido.data.remote.api.pais.PaisClient
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,7 +18,7 @@ class RetrofitClient {
     @Singleton
     fun provideRetrofit(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("http://10.0.2.2:17000/")
+            .baseUrl(BuildConfig.API_BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
@@ -25,6 +27,12 @@ class RetrofitClient {
     @Singleton
     fun providePaisRequest(retrofit: Retrofit): PaisClient {
         return retrofit.create(PaisClient::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideArticuloRequest(retrofit: Retrofit): ArticuloClient {
+        return retrofit.create(ArticuloClient::class.java)
     }
 }
 

@@ -1,11 +1,12 @@
-package com.axoft.tangopedido.data.remote.api
+package com.axoft.tangopedido.data.remote.api.pais
 
 import com.axoft.tangopedido.data.remote.dto.PaisResponse
+import retrofit2.Response
 import javax.inject.Inject
 
 class PaisService @Inject constructor(private val paisClient: PaisClient) {
-    suspend fun getById(process: Int, id: Int, token: String, company: Int): PaisResponse? {
-        val response = paisClient.getById(process = process, id = id, token = token, company = company)
+    suspend fun GetPaisById(id: Int): PaisResponse? {
+        val response: Response<PaisResponse> = paisClient.GetPaisById(id = id)
 
         return if (response.isSuccessful) {
             val body = response.body()
