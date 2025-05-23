@@ -3,14 +3,12 @@ package com.axoft.tangopedido.data.remote.dto
 import com.google.gson.annotations.SerializedName
 
 data class ArticuloResponse(
-    @SerializedName("data") val data: List<Articulo>,
-    @SerializedName("message") val message: String?,
-    @SerializedName("maxRowVersion") val maxRowVersion: Int?,
-    @SerializedName("succeeded") val succeeded: Boolean
+    @SerializedName("items") val data: List<ArticuloDto>
 )
 
-data class Articulo(
-    @SerializedName("codigO_ARTICULO") val codigo: String,
-    @SerializedName("descripcio") val descripcion: String,
-    @SerializedName("desC_ADICIONAL") val descripcionAdicional: String
+data class ArticuloDto(
+    @SerializedName("id") val id: Int,
+    @SerializedName("codigo") val codigo: String?,
+    @SerializedName("descripcion") val descripcion: String?,
+    @SerializedName("descripcionAdicional") val descripcionAdicional: String?
 )

@@ -1,28 +1,32 @@
 package com.axoft.tangopedido.presentation.feature.main
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.axoft.tangopedido.data.remote.dto.Articulo
-import com.axoft.tangopedido.data.remote.dto.PaisResponse
-import com.axoft.tangopedido.domain.usecase.articulo.GetArticuloListUseCase
-import com.axoft.tangopedido.domain.usecase.pais.GetPaisByIdUseCase
+import com.axoft.tangopedido.domain.model.Articulo
+import com.axoft.tangopedido.domain.model.Cliente
+import com.axoft.tangopedido.domain.usecase.articulo.GetArticulosUseCase
+import com.axoft.tangopedido.domain.usecase.pais.GetClientesUseCase
+import com.axoft.tangopedido.presentation.mapper.toSimpleItem
+import com.axoft.tangopedido.presentation.model.SimpleItemCard
+import com.axoft.tangopedido.presentation.uistate.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val getPaisByIdUseCase: GetPaisByIdUseCase,
-    private val getArticuloListUseCase: GetArticuloListUseCase
+    private val getClientesUseCase: GetClientesUseCase,
+    private val getArticuloUseCase: GetArticulosUseCase
 ) : ViewModel() {
 
-    private val _data = MutableLiveData<PaisResponse?>()
-    val data: LiveData<PaisResponse?> = _data
+    private val _clientes = MutableStateFlow<UiState<List<SimpleItemCard>>>(UiState.Loading)
+    val clientes: StateFlow<UiState<List<SimpleItemCard>>> = _clientes.asStateFlow()
 
-    private val _articulos = MutableLiveData<List<Articulo>?>()
-    val articulo: LiveData<List<Articulo>?> = _articulos
+    private val _articulos = MutableStateFlow<UiState<List<SimpleItemCard>>>(UiState.Loading)
+    val articulos: StateFlow<UiState<List<SimpleItemCard>>> = _articulos.asStateFlow()
 
     init {
         getDataPais()
@@ -32,11 +36,11 @@ class MainViewModel @Inject constructor(
     fun getDataPais() {
         viewModelScope.launch {
             try {
-                val result = getPaisByIdUseCase(id = 1)
-                _data.value = result
-            } catch (e: Exception) {
-                e.printStackTrace()
-                _data.value = null
+                val result: List<Cliente>? = getClientesUseCase()
+                _clientes.value = UiState.Success(result?.map { it.toSimpleItem() } ?: emptyList())
+
+            } catch (ex: kotlin.Exception) {
+                _clientes.value = UiState.Error("Ocurrió un error inesperado: $ex")
             }
         }
     }
@@ -44,11 +48,10 @@ class MainViewModel @Inject constructor(
     fun getDataArticulo() {
         viewModelScope.launch {
             try {
-                val result = getArticuloListUseCase()
-                _articulos.value = result
-            } catch (e: Exception) {
-                e.printStackTrace()
-                _articulos.value = null
+                val result: List<Articulo>? = getArticuloUseCase()
+                _articulos.value = UiState.Success(result?.map { it.toSimpleItem() } ?: emptyList())
+            } catch (ex: kotlin.Exception) {
+                _articulos.value = UiState.Error("Ocurrió un error inesperado: $ex")
             }
         }
     }

@@ -1,12 +1,12 @@
-package com.axoft.tangopedido.data.remote.api.pais
+package com.axoft.tangopedido.data.remote.api.cliente
 
-import com.axoft.tangopedido.data.remote.dto.PaisResponse
+import com.axoft.tangopedido.data.remote.dto.ClienteResponse
 import retrofit2.Response
 import javax.inject.Inject
 
-class PaisService @Inject constructor(private val paisClient: PaisClient) {
-    suspend fun GetPaisById(id: Int): PaisResponse? {
-        val response: Response<PaisResponse> = paisClient.GetPaisById(id = id)
+class ClienteService @Inject constructor(private val clienteClient: ClienteClient) {
+    suspend fun getAll(): ClienteResponse? {
+        val response: Response<ClienteResponse> = clienteClient.getAll()
 
         return if (response.isSuccessful) {
             val body = response.body()

@@ -2,7 +2,7 @@ package com.axoft.tangopedido.di
 
 import com.axoft.tangopedido.BuildConfig
 import com.axoft.tangopedido.data.remote.api.articulo.ArticuloClient
-import com.axoft.tangopedido.data.remote.api.pais.PaisClient
+import com.axoft.tangopedido.data.remote.api.cliente.ClienteClient
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -25,8 +25,8 @@ class RetrofitClient {
 
     @Provides
     @Singleton
-    fun providePaisRequest(retrofit: Retrofit): PaisClient {
-        return retrofit.create(PaisClient::class.java)
+    fun providePaisRequest(retrofit: Retrofit): ClienteClient {
+        return retrofit.create(ClienteClient::class.java)
     }
 
     @Provides
