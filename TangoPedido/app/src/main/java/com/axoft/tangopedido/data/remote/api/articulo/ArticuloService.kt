@@ -8,6 +8,15 @@ class ArticuloService @Inject constructor(private val articuloClient: ArticuloCl
     suspend fun getAll(): ArticuloResponse? {
         val response: Response<ArticuloResponse> = articuloClient.getAll()
 
-        return if (response.isSuccessful) response.body() else null
+        return if (response.isSuccessful) {
+            val body = response.body()
+            println("Response body: $body")
+
+            body
+
+        } else {
+            val errorBody = response.errorBody()?.string()
+            throw java.lang.RuntimeException(errorBody)
+        }
     }
 }

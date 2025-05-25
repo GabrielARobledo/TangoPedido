@@ -1,13 +1,13 @@
-package com.axoft.tangopedido.data.remote.api.cliente
+package com.axoft.tangopedido.data.remote.api.vendedor
 
-import com.axoft.tangopedido.data.remote.dto.ClienteResponse
+import com.axoft.tangopedido.data.remote.dto.VendedorResponse
 import retrofit2.Response
 import javax.inject.Inject
 
-class ClienteService @Inject constructor(private val clienteClient: ClienteClient) {
+class VendedorService @Inject constructor(private val vendedorClient: VendedorClient) {
     @Throws(RuntimeException::class)
-    suspend fun getAll(): ClienteResponse? {
-        val response: Response<ClienteResponse> = clienteClient.getAll()
+    suspend fun getAll(): VendedorResponse? {
+        val response: Response<VendedorResponse> = vendedorClient.getAll()
 
         return if (response.isSuccessful) {
             val body = response.body()

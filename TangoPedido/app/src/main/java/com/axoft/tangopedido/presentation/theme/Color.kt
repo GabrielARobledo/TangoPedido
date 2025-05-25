@@ -2,22 +2,22 @@ package com.axoft.tangopedido.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 
-// Lights
-val LightColorBackground = Color(0xFFFFFFFF)            // #ffffff blanco puro
-val LightColorActivePrimary = Color(0xFF597BA6)         // #597ba6 azul medio
-val LightColorButtons = Color(0xFFFFFFFF)               // #ffffff blanco puro
-val LightColorHeader = Color(0xFFF8F8F8)                 // #f8f8f8 gris muy claro
-val LightColorDanger = Color(0xFFDC3545)                 // #dc3545 rojo error
-val LightFontPrimary = Color(0xFF000000)                   // #000 negro
-val LightFontButtonPrimary = Color(0xFFFFFFFF)             // #fff blanco
-val LightFontButtons = Color(0xFF000000)                   // #000 negro
-
 // Dark
-val DarkColorBackground = Color(0xFF000000)              // #000000 negro puro
-val DarkColorHeader = Color(0xFF1E1E1E)                  // #1e1e1e gris oscuro
-val DarkColorActivePrimary = Color(0xFF2260B6)            // #2260b6 azul fuerte
-val DarkFontPrimary = Color(0xFFEBEBEB)                   // #ebebeb gris muy claro
-val DarkFontButtonPrimary = Color(0xFFFFFFFF)              // #fff blanco puro
-val DarkFontButtons = Color(0xFFFFFFFF)                    // #fff blanco puro
-val DarkColorButtons = Color(0xFF545454)                   // #545454 gris medio
-val DarkColorDanger = Color(0xFFDC3545)                    // #dc3545 rojo
+val DarkColorBackground = Color(0xFF121212)              // fondo general oscuro
+val DarkColorHeader = Color(0xFF1E1E1E)                  // header oscuro
+val DarkColorActivePrimary = Color(0xFF0288D1)           // azul profundo (Light Blue 700)
+val DarkFontPrimary = Color(0xFFE0E0E0)                  // texto gris claro
+val DarkFontButtonPrimary = Color(0xFFFFFFFF)            // texto blanco
+val DarkFontButtons = Color(0xFFFFFFFF)                  // texto blanco en botones oscuros
+val DarkColorButtons = Color(0xFF2C2C2C)                 // fondo de botones oscuros
+val DarkColorDanger = Color(0xFFDC3545)                  // rojo error
+
+// Lights
+val LightColorBackground = Color(0xFFE1F5FE)             // fondo general (Light Blue 50)
+val LightColorActivePrimary = Color(0xFF03A9F4)          // azul principal (Light Blue 500)
+val LightColorButtons = Color(0xFFFFFFFF)                // botones con fondo blanco
+val LightColorHeader = Color(0xFFB3E5FC)                 // header (Light Blue 100)
+val LightColorDanger = Color(0xFFDC3545)                 // rojo error
+val LightFontPrimary = Color(0xFF212121)                 // texto oscuro general
+val LightFontButtonPrimary = Color(0xFFFFFFFF)           // texto blanco en botones azules
+val LightFontButtons = Color(0xFF212121)                 // texto oscuro en botones blancos

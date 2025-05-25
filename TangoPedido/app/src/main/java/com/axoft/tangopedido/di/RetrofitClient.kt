@@ -3,6 +3,7 @@ package com.axoft.tangopedido.di
 import com.axoft.tangopedido.BuildConfig
 import com.axoft.tangopedido.data.remote.api.articulo.ArticuloClient
 import com.axoft.tangopedido.data.remote.api.cliente.ClienteClient
+import com.axoft.tangopedido.data.remote.api.vendedor.VendedorClient
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -33,6 +34,12 @@ class RetrofitClient {
     @Singleton
     fun provideArticuloRequest(retrofit: Retrofit): ArticuloClient {
         return retrofit.create(ArticuloClient::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideVendedorRequest(retrofit: Retrofit): VendedorClient {
+        return retrofit.create(VendedorClient::class.java)
     }
 }
 

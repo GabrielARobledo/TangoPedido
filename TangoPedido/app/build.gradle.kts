@@ -80,6 +80,9 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
 
+    // Toolbar
+    implementation(libs.androidx.foundation)
+
     // Testing
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

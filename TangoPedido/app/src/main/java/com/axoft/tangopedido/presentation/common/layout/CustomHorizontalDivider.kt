@@ -12,7 +12,7 @@ import androidx.compose.ui.unit.dp
 fun CustomHorizontalDivider() {
     HorizontalDivider(
         modifier = Modifier
-            .padding(vertical = 16.dp)
+            .padding(vertical = 4.dp)
             .fillMaxWidth(),
         thickness = 1.dp,
         color = Color.LightGray

@@ -6,8 +6,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
@@ -18,27 +16,29 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import com.axoft.tangopedido.presentation.model.SimpleItemCard
+import com.axoft.tangopedido.presentation.model.ItemCard
 
 @Composable
 fun SimpleCard(
     modifier: Modifier = Modifier,
-    item: SimpleItemCard
+    item: ItemCard,
+    onClick: (ItemCard) -> Unit
 ) {
     Card(
         modifier = modifier
             .fillMaxWidth()
             .padding(8.dp),
+        onClick = { onClick(item) },
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceVariant
+            containerColor = MaterialTheme.colorScheme.surface
         ),
-        elevation = CardDefaults.cardElevation(defaultElevation = 3.dp),
-        shape = RoundedCornerShape(16.dp)
+        elevation = CardDefaults.cardElevation(defaultElevation = 5.dp),
+        shape = RoundedCornerShape(10.dp)
     ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp),
+                .padding(8.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Icon(
@@ -46,24 +46,29 @@ fun SimpleCard(
                 contentDescription = null,
                 tint = MaterialTheme.colorScheme.primary,
                 modifier = Modifier
-                    .size(32.dp)
+                    .size(40.dp)
                     .padding(end = 12.dp)
             )
 
             Column(modifier = Modifier.weight(1f)) {
-                Text(
-                    text = item.codigo.orEmpty(),
-                    style = MaterialTheme.typography.titleMedium,
-                    color = MaterialTheme.colorScheme.onSurface
-                )
-                Text(
-                    text = item.descripcion.orEmpty(),
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    maxLines = 2,
-                    overflow = TextOverflow.Ellipsis
-                )
+                Content(item)
             }
         }
     }
+}
+
+@Composable
+fun Content(item: ItemCard) {
+    Text(
+        text = item.codigo.orEmpty(),
+        style = MaterialTheme.typography.titleMedium,
+        color = MaterialTheme.colorScheme.onSurface
+    )
+    Text(
+        text = item.descripcion.orEmpty(),
+        style = MaterialTheme.typography.bodySmall,
+        color = MaterialTheme.colorScheme.onSurfaceVariant,
+        maxLines = 2,
+        overflow = TextOverflow.Ellipsis
+    )
 }

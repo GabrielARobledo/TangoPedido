@@ -1,4 +1,4 @@
-package com.axoft.tangopedido.domain.usecase.pais
+package com.axoft.tangopedido.domain.usecase.cliente
 
 import com.axoft.tangopedido.data.repository.ClienteRepository
 import com.axoft.tangopedido.domain.model.Cliente

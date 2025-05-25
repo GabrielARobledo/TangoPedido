@@ -1,38 +1,47 @@
 package com.axoft.tangopedido.presentation.feature.login
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
-import com.axoft.tangopedido.R
-import com.axoft.tangopedido.presentation.common.component.button.PrimaryButton
-import com.axoft.tangopedido.presentation.common.component.textfield.CustomTextField
-import com.axoft.tangopedido.presentation.feature.main.MainViewModel
+import androidx.navigation.NavHostController
+import com.axoft.tangopedido.presentation.common.component.card.SimpleCard
+import com.axoft.tangopedido.presentation.common.component.progress.CircularProgressCustom
+import com.axoft.tangopedido.presentation.common.scaffold.AppScaffold
+import com.axoft.tangopedido.presentation.feature.main.AppNavigation
+import com.axoft.tangopedido.presentation.uistate.UiState
 
 @Composable
-fun LoginScreen(
-    mainViewModel: MainViewModel = hiltViewModel()
-) {
-    var texto1 by remember { mutableStateOf("") }
-    var texto2 by remember { mutableStateOf("") }
+fun LoginScreen(loginViewModel: LoginViewModel, navController: NavHostController) {
+    AppScaffold {
+        val vendedorState by loginViewModel.vendedores.collectAsState()
+        val currentState = vendedorState
 
-    // UI
-    Column(modifier = Modifier.padding(16.dp)) {
-        CustomTextField(label = stringResource(R.string.login_key), value = texto1) {
-        }
+        Text("Vendedor")
 
-        Spacer(modifier = Modifier.height(16.dp))
+        when (currentState) {
+            is UiState.Loading -> CircularProgressCustom(currentState.label)
+            is UiState.Success -> {
+                Column {
+                    currentState.data.forEach { item ->
+                        SimpleCard(item = item) { itemSelected ->
+                            loginViewModel.loginVendedor(itemSelected.id)
+                            navController.navigate(AppNavigation.Home.route) {
+                                popUpTo(AppNavigation.Login.route) {
+                                    inclusive = true
+                                }
+                            }
+                        }
+                    }
+                }
+            }
 
-        CustomTextField(label = stringResource(R.string.login_pass), value = texto2) {
+            is UiState.Error -> Text(
+                "Error: ${currentState.message}",
+                color = MaterialTheme.colorScheme.error
+            )
         }
     }
 }
