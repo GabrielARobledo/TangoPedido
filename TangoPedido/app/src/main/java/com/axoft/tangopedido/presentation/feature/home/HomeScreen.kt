@@ -1,14 +1,37 @@
 package com.axoft.tangopedido.presentation.feature.home
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.navigation.NavHostController
+import com.axoft.tangopedido.presentation.common.component.card.SelectCard
+import com.axoft.tangopedido.presentation.common.scaffold.AppScaffold
+import com.axoft.tangopedido.presentation.common.toolbar.HomeToolbar
+import com.axoft.tangopedido.presentation.feature.main.AppNavigation
+import com.axoft.tangopedido.presentation.feature.pedido.pedidoViewModel
 
 @Composable
-fun HomeScreen() {
-    Column {
-        Text(
-            text = "Pedido mobile"
-        )
+fun HomeScreen(navController: NavHostController) {
+    val pedidoViewModel = pedidoViewModel()
+    val pedido by pedidoViewModel.pedido.collectAsState()
+
+    AppScaffold(isScrollable = true, topBar = { HomeToolbar(pedidoViewModel.getNombreVendedorLogged()) }) {
+        SelectCard(
+            AppNavigation.Cliente.label,
+            itemSelected = pedido.clienteSelected?.getCodeDescription()
+        ) {
+            navController.navigate(AppNavigation.Cliente.route)
+        }
+
+        SelectCard(
+            (AppNavigation.Articulo.label),
+            itemSelected = pedido.articuloSelected?.getCodeDescription()
+        ) {
+            navController.navigate(AppNavigation.Articulo.route)
+        }
+
+        SelectCard(AppNavigation.Promociones.label) {
+            navController.navigate(AppNavigation.Promociones.route)
+        }
     }
 }

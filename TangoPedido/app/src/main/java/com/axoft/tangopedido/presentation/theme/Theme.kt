@@ -11,32 +11,33 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
+    primary = DarkColorActivePrimary,         // Azul principal (botones, topbar)
+    onPrimary = DarkFontButtonPrimary,        // Texto sobre el azul
+    background = DarkColorBackground,         // Fondo general
+    surface = DarkColorHeader,                // Superficie (cards, sheets)
+    onSurface = DarkFontPrimary,              // Texto sobre superficies
+    secondary = DarkColorButtons,             // Colores alternativos (ej. botones neutros)
+    onSecondary = DarkFontButtons,            // Texto sobre esos botones
+    error = DarkColorDanger,
+    onError = DarkFontButtonPrimary
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
-
-    /* Other default colors to override
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
-    onPrimary = Color.White,
-    onSecondary = Color.White,
-    onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-    */
+    primary = LightColorActivePrimary,        // Azul principal (botones, topbar)
+    onPrimary = LightFontButtonPrimary,       // Texto blanco sobre azul
+    background = LightColorBackground,        // Fondo general
+    surface = LightColorHeader,               // Superficies blancas (cards, sheets)
+    onSurface = LightFontPrimary,             // Texto en cards/sheets
+    secondary = LightColorButtons,            // Botones secundarios
+    onSecondary = LightFontButtons,           // Texto en esos botones
+    error = LightColorDanger,
+    onError = LightFontButtonPrimary
 )
 
 @Composable
 fun TangoPedidoTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
+    dynamicColor: Boolean = false, // false para usar el color personalizado.
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {

@@ -5,4 +5,7 @@
     -- LoginScreen
     <string name="login_key">Llave</string>
     <string name="login_pass">Clave</string>
+
+    -- MainScreen
+    <string name="main_error">Ocurrió un error inesperado</string>
 </resources>

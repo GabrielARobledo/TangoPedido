@@ -1,42 +1,29 @@
 package com.axoft.tangopedido.presentation.feature.login
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.axoft.tangopedido.R
-import com.axoft.tangopedido.presentation.common.component.button.PrimaryButton
-import com.axoft.tangopedido.presentation.common.component.textfield.CustomTextField
-import com.axoft.tangopedido.presentation.feature.main.MainViewModel
+import androidx.navigation.NavHostController
+import com.axoft.tangopedido.presentation.common.component.card.LoadItemCard
+import com.axoft.tangopedido.presentation.common.component.text.ControlText
+import com.axoft.tangopedido.presentation.common.scaffold.AppScaffold
+import com.axoft.tangopedido.presentation.feature.main.AppNavigation
 
 @Composable
-fun LoginScreen(
-    mainViewModel: MainViewModel = hiltViewModel()
-) {
-    var texto1 by remember { mutableStateOf("") }
-    var texto2 by remember { mutableStateOf("") }
+fun LoginScreen(navController: NavHostController) {
+    val loginViewModel: LoginViewModel = hiltViewModel()
+    val vendedorState by loginViewModel.vendedores.collectAsState()
 
-    // UI
-    Column(modifier = Modifier.padding(16.dp)) {
-        CustomTextField(label = stringResource(R.string.login_key), value = texto1) {
-        }
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        CustomTextField(label = stringResource(R.string.login_pass), value = texto2) {
-        }
-
-        PrimaryButton("Pulsame") {
-            mainViewModel.loginIn()
+    AppScaffold {
+        ControlText(AppNavigation.Login.label)
+        LoadItemCard(vendedorState) { itemSelected ->
+            loginViewModel.loginVendedor(itemSelected)
+            navController.navigate(AppNavigation.Home.route) {
+                popUpTo(AppNavigation.Login.route) {
+                    inclusive = true
+                }
+            }
         }
     }
 }

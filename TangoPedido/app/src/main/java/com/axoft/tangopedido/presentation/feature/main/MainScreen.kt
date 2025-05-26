@@ -1,26 +1,22 @@
 package com.axoft.tangopedido.presentation.feature.main
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
-import androidx.compose.ui.Modifier
-import com.axoft.tangopedido.presentation.common.scaffold.AppScaffold
-import com.axoft.tangopedido.presentation.feature.home.HomeScreen
-import com.axoft.tangopedido.presentation.feature.login.LoginScreen
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.compose.rememberNavController
+import com.axoft.tangopedido.presentation.common.animation.SlideNavHost
 
 @Composable
-fun MainScreen(mainViewModel: MainViewModel) {
-    val isLogged by mainViewModel.isLogged.collectAsState()
+fun MainScreen() {
+    val mainViewModel: MainViewModel = hiltViewModel()
+    val navController = rememberNavController()
 
-    AppScaffold { innerPadding ->
-        Column(modifier = Modifier.padding(innerPadding)) {
-            if (isLogged) {
-                HomeScreen()
-            } else {
-                LoginScreen(mainViewModel)
-            }
-        }
+    //Mock para tener sesion iniciada.
+    //mainViewModel.authenticate()
+
+    SlideNavHost(
+        navController = navController,
+        startDestination = mainViewModel.getStartRoute()
+    ) {
+        mainNavGraph(navController)
     }
 }
