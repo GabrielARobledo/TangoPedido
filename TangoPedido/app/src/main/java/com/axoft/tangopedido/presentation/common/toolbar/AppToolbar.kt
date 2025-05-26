@@ -5,10 +5,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
@@ -21,21 +18,14 @@ import com.axoft.tangopedido.presentation.common.component.text.TitleText
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AppToolbar(
-    arrowBack: Boolean = false,
+    navigationIcon: @Composable () -> Unit = {},
     info: @Composable () -> Unit = {},
     subtitle: @Composable () -> Unit = {}
 ) {
     Column {
         TopAppBar(
             modifier = Modifier.height(85.dp),
-            navigationIcon = {
-                if (arrowBack) {
-                    Icon(
-                        imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                        contentDescription = "Cuenta"
-                    )
-                }
-            },
+            navigationIcon = navigationIcon,
             title = { ToolbarTopSection(info) },
             colors = TopAppBarDefaults.topAppBarColors(
                 containerColor = MaterialTheme.colorScheme.primary,

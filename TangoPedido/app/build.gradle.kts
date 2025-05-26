@@ -71,6 +71,13 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.androidx.runtime.livedata)
 
+    // Room
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.transport.runtime)
+    implementation(libs.androidx.benchmark.common)
+    kapt(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.ktx)
+
     // Hilt
     kapt(libs.hilt.compiler)
     implementation(libs.hilt.android)

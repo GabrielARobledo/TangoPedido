@@ -4,8 +4,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -20,16 +19,27 @@ fun AppScaffold(
 ) {
     Scaffold(
         modifier = Modifier.fillMaxSize(),
-        topBar = topBar,
-        content = { innerPadding ->
-            val modifier = Modifier
-                .padding(innerPadding)
-                .padding(top = 8.dp)
-                .then(if (isScrollable) Modifier.verticalScroll(rememberScrollState()) else Modifier)
+        topBar = topBar
+    ) { innerPadding ->
+        val baseModifier = Modifier
+            .padding(innerPadding)
+            .padding(top = 16.dp)
 
-            Column(modifier = modifier) {
-                content.invoke(innerPadding)
+        if (isScrollable) {
+            LazyColumn(
+                modifier = baseModifier,
+                contentPadding = PaddingValues(bottom = 16.dp)
+            ) {
+                item {
+                    content(innerPadding)
+                }
+            }
+        } else {
+            Column(
+                modifier = baseModifier
+            ) {
+                content(innerPadding)
             }
         }
-    )
+    }
 }

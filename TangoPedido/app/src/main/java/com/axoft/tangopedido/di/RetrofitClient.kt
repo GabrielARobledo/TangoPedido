@@ -42,4 +42,3 @@ class RetrofitClient {
         return retrofit.create(VendedorClient::class.java)
     }
 }
-

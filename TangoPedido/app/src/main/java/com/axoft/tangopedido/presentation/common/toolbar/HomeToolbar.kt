@@ -1,6 +1,7 @@
 package com.axoft.tangopedido.presentation.common.toolbar
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -10,6 +11,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -23,8 +25,17 @@ import androidx.compose.ui.unit.dp
 import com.axoft.tangopedido.presentation.common.component.text.SubtitleText
 
 @Composable
-fun HomeToolbar(subtitle: String?) {
+fun HomeToolbar(subtitle: String?, arrowBack: Boolean = false, backOnClick: () -> Unit = {}) {
     AppToolbar(
+        navigationIcon = {
+            if (arrowBack) {
+                Icon(
+                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                    contentDescription = "Volver",
+                    Modifier.clickable(onClick = backOnClick)
+                )
+            }
+        },
         info = {
             Text(text = "$0.00")
         },
@@ -50,7 +61,7 @@ fun HomeToolbar(subtitle: String?) {
                         tint = MaterialTheme.colorScheme.primary
                     )
                 }
-                Spacer(modifier = Modifier.width(10.dp))
+                Spacer(modifier = Modifier.width(8.dp))
                 SubtitleText(text = subtitle ?: "")
             }
         })

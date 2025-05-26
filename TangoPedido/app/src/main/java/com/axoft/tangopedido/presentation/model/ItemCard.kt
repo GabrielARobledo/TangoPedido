@@ -7,7 +7,7 @@ data class ItemCard(
     val label : String? = null,
     val codigo: String?,
     val descripcion: String?,
-    val icon: ImageVector
+    val icon: ImageVector? = null
 ) {
     fun getCodeDescription(): String {
         return "$codigo - $descripcion"
