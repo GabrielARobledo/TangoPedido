@@ -31,7 +31,9 @@ fun ArticuloScreen(navController: NavHostController) {
         Spacer(modifier = Modifier.height(8.dp))
         val articuloState by articuloViewModel.articulos.collectAsState()
 
-        LoadItemCard(articuloState) { itemSelected ->
+        LoadItemCard(
+            articuloState,
+            onToggleFavorite = { articuloViewModel.toggleFavorito(it) }) { itemSelected ->
             pedidoViewModel.setArticulo(itemSelected)
             navController.popBackStack()
         }
