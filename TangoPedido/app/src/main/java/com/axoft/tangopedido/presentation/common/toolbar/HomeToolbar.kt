@@ -52,7 +52,7 @@ fun HomeToolbar(subtitle: String?, arrowBack: Boolean = false, backOnClick: () -
                         .size(24.dp)
                         .clip(CircleShape)
                         .background(Color.White)
-                        .padding(2.dp),
+                        .padding(1.dp),
                     contentAlignment = Alignment.Center
                 ) {
                     Icon(

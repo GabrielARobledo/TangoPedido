@@ -15,22 +15,28 @@ fun HomeScreen(navController: NavHostController) {
     val pedidoViewModel = pedidoViewModel()
     val pedido by pedidoViewModel.pedido.collectAsState()
 
-    AppScaffold(isScrollable = true, topBar = { HomeToolbar(pedidoViewModel.getNombreVendedorLogged()) }) {
+    AppScaffold(
+        isScrollable = true,
+        topBar = { HomeToolbar(pedidoViewModel.getNombreVendedorLogged()) }) {
         SelectCard(
-            AppNavigation.Cliente.label,
-            itemSelected = pedido.clienteSelected?.getCodeDescription()
+            label = AppNavigation.Cliente.label,
+            value = "Seleccionar cliente",
+            valueSelected = pedido.clienteSelected?.getCodeDescription()
         ) {
             navController.navigate(AppNavigation.Cliente.route)
         }
 
         SelectCard(
-            (AppNavigation.Articulo.label),
-            itemSelected = pedido.articuloSelected?.getCodeDescription()
+            (AppNavigation.Renglon.label),
+            value = "Ingresar renglones"
         ) {
-            navController.navigate(AppNavigation.Articulo.route)
+            navController.navigate(AppNavigation.Renglon.route)
         }
 
-        SelectCard(AppNavigation.Promociones.label) {
+        SelectCard(
+            label = AppNavigation.Promociones.label,
+            value = "Seleccionar cliente"
+        ) {
             navController.navigate(AppNavigation.Promociones.route)
         }
     }

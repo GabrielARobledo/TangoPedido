@@ -11,6 +11,7 @@ val DarkFontButtonPrimary = Color(0xFFFFFFFF)            // texto blanco
 val DarkFontButtons = Color(0xFFFFFFFF)                  // texto blanco en botones oscuros
 val DarkColorButtons = Color(0xFF2C2C2C)                 // fondo de botones oscuros
 val DarkColorDanger = Color(0xFFDC3545)                  // rojo error
+val DarkHintColor = Color(0xFF545454)
 
 // Lights
 val LightColorBackground = Color(0xFFE1F5FE)             // fondo general (Light Blue 50)
@@ -21,3 +22,4 @@ val LightColorDanger = Color(0xFFDC3545)                 // rojo error
 val LightFontPrimary = Color(0xFF212121)                 // texto oscuro general
 val LightFontButtonPrimary = Color(0xFFFFFFFF)           // texto blanco en botones azules
 val LightFontButtons = Color(0xFF212121)                 // texto oscuro en botones blancos
+val LightHintColor = Color(0xFF9E9E9E)

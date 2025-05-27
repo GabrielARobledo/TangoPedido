@@ -9,7 +9,7 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 
-private const val SLIDE_ANIMATION_DURATION_MS = 300
+const val SLIDE_ANIMATION_DURATION_MS = 300
 
 @Composable
 fun SlideNavHost(

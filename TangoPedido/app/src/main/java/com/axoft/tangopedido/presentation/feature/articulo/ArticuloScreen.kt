@@ -32,7 +32,7 @@ fun ArticuloScreen(navController: NavHostController) {
         val articuloState by articuloViewModel.articulos.collectAsState()
 
         LoadItemCard(articuloState) { itemSelected ->
-            pedidoViewModel.setArticulo(itemSelected)
+            pedidoViewModel.addArticulo(itemSelected)
             navController.popBackStack()
         }
     }

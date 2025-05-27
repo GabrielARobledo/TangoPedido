@@ -24,7 +24,7 @@ fun AppToolbar(
 ) {
     Column {
         TopAppBar(
-            modifier = Modifier.height(85.dp),
+            modifier = Modifier.height(80.dp),
             navigationIcon = navigationIcon,
             title = { ToolbarTopSection(info) },
             colors = TopAppBarDefaults.topAppBarColors(

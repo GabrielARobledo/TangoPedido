@@ -1,7 +1,6 @@
 package com.axoft.tangopedido.presentation.common.component.card
 
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -13,14 +12,17 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.axoft.tangopedido.presentation.common.component.text.ControlText
+import com.axoft.tangopedido.presentation.theme.hint
 
 @Composable
 fun SelectCard(
     label: String,
-    itemSelected: String? = null,
+    value: String,
+    valueSelected: String? = null,
     onClick: () -> Unit
 ) {
     ControlText(label)
@@ -32,10 +34,12 @@ fun SelectCard(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                modifier = Modifier.weight(1f).padding(start = 8.dp),
-                text = itemSelected ?: "Seleccionar ${label.lowercase()}",
-                style = MaterialTheme.typography.titleMedium,
-                color = MaterialTheme.colorScheme.onSurface,
+                modifier = Modifier
+                    .weight(1f)
+                    .padding(start = 8.dp),
+                text = valueSelected ?: value,
+                style = MaterialTheme.typography.labelLarge,
+                color = if (valueSelected == null) MaterialTheme.colorScheme.hint else Color.Unspecified,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
@@ -43,8 +47,7 @@ fun SelectCard(
                 imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
                 contentDescription = null,
                 tint = MaterialTheme.colorScheme.primary,
-                modifier = Modifier
-                    .size(40.dp)
+                modifier = Modifier.size(30.dp)
             )
         }
     }

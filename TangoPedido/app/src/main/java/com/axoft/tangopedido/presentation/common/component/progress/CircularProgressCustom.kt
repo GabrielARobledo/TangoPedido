@@ -2,7 +2,9 @@ package com.axoft.tangopedido.presentation.common.component.progress
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
@@ -21,6 +23,7 @@ fun CircularProgressCustom(text: String?) {
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             CircularProgressIndicator()
+            Spacer(modifier = Modifier.height(8.dp))
             Text("Cargando $text...")
         }
     }

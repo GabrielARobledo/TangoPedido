@@ -14,12 +14,14 @@ import com.axoft.tangopedido.presentation.common.toolbar.AppToolbar
 @Composable
 fun AppScaffold(
     isScrollable: Boolean = false,
+    floatingActionButton: @Composable () -> Unit = {},
     topBar: @Composable () -> Unit = { AppToolbar() },
     content: @Composable (PaddingValues) -> Unit
 ) {
     Scaffold(
         modifier = Modifier.fillMaxSize(),
-        topBar = topBar
+        topBar = topBar,
+        floatingActionButton = floatingActionButton
     ) { innerPadding ->
         val baseModifier = Modifier
             .padding(innerPadding)
@@ -35,9 +37,7 @@ fun AppScaffold(
                 }
             }
         } else {
-            Column(
-                modifier = baseModifier
-            ) {
+            Column(modifier = baseModifier) {
                 content(innerPadding)
             }
         }

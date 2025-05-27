@@ -2,8 +2,11 @@ package com.axoft.tangopedido.presentation.feature.pedido
 
 import androidx.lifecycle.ViewModel
 import com.axoft.tangopedido.data.repository.SessionRepository
+import com.axoft.tangopedido.presentation.mapper.toRenglonCard
+import com.axoft.tangopedido.presentation.mapper.toSimpleItem
 import com.axoft.tangopedido.presentation.model.ItemCard
 import com.axoft.tangopedido.presentation.model.Pedido
+import com.axoft.tangopedido.presentation.model.RenglonCard
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -14,7 +17,6 @@ import javax.inject.Inject
 class PedidoViewModel @Inject constructor(
     sessionRepository: SessionRepository
 ) : ViewModel() {
-
     private val _pedido = MutableStateFlow<Pedido>(Pedido())
     val pedido: StateFlow<Pedido> = _pedido.asStateFlow()
 
@@ -32,5 +34,15 @@ class PedidoViewModel @Inject constructor(
 
     fun setArticulo(articulo: ItemCard) {
         _pedido.value = _pedido.value.copy(articuloSelected = articulo)
+    }
+
+    fun addArticulo(articulo: ItemCard) {
+        val renglonCard: RenglonCard = articulo.toRenglonCard()
+        val pedidoActual = _pedido.value
+        val nuevaLista = pedidoActual.articulos + renglonCard
+        _pedido.value = pedidoActual.copy(
+            articulos = nuevaLista,
+            articuloSelected = articulo
+        )
     }
 }

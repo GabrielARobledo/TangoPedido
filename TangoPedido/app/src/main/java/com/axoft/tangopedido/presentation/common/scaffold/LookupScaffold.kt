@@ -10,10 +10,12 @@ import com.axoft.tangopedido.presentation.feature.pedido.PedidoViewModel
 fun LookupScaffold(
     navController: NavHostController,
     pedidoViewModel: PedidoViewModel,
-    content: @Composable (PaddingValues) -> Unit
+    floatingActionButton: @Composable () -> Unit = {},
+    content: @Composable (PaddingValues) -> Unit,
 ) {
     AppScaffold(
         isScrollable = true,
+        floatingActionButton = floatingActionButton,
         topBar = {
             HomeToolbar(
                 subtitle = pedidoViewModel.getNombreVendedorLogged(),

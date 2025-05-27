@@ -5,5 +5,7 @@ sealed class AppNavigation(val route: String, val label: String) {
     object Home : AppNavigation("home", "")
     object Cliente : AppNavigation("cliente", "Cliente")
     object Articulo : AppNavigation("articulo", "Artículo")
+    object ArticuloEdit : AppNavigation("articuloedit", "Edición artículo")
+    object Renglon : AppNavigation("renglon", "Renglones")
     object Promociones : AppNavigation("promocion", "Promoción")
 }
