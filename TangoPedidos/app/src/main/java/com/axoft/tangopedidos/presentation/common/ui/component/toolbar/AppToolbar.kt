@@ -34,14 +34,14 @@ import com.axoft.tangopedidos.presentation.common.ui.component.text.TitleText
 @Composable
 fun AppToolbar(
     navigationIcon: @Composable () -> Unit = {},
-    info: @Composable () -> Unit = {},
+    toolbarRightContent: @Composable () -> Unit = {},
     subtitle: @Composable () -> Unit = {}
 ) {
     Column {
         TopAppBar(
             modifier = Modifier.height(80.dp),
             navigationIcon = navigationIcon,
-            title = { TitleContent(info) },
+            title = { TitleContent(toolbarRightContent) },
             colors = TopAppBarDefaults.topAppBarColors(
                 containerColor = MaterialTheme.colorScheme.primary,
                 titleContentColor = MaterialTheme.colorScheme.onPrimary,
@@ -54,11 +54,11 @@ fun AppToolbar(
 }
 
 @Composable
-private fun TitleContent(info: @Composable () -> Unit) {
+private fun TitleContent(toolbarRightContent: @Composable () -> Unit) {
     Row(verticalAlignment = Alignment.CenterVertically) {
         TitleText("Tango Pedidos")
         Spacer(modifier = Modifier.weight(1f))
-        info.invoke()
+        toolbarRightContent()
         Spacer(modifier = Modifier.width(5.dp))
     }
 }

@@ -42,6 +42,7 @@ import com.axoft.tangopedidos.presentation.common.ui.component.text.SubtitleText
 fun HomeToolbar(
     subtitle: String?,
     arrowBack: Boolean = false,
+    toolbarRightContent: @Composable () -> Unit = {},
     backOnClick: () -> Unit = {}
 ) {
     AppToolbar(
@@ -50,8 +51,8 @@ fun HomeToolbar(
                 BackArrowIcon(backOnClick)
             }
         },
-        info = { InfoText() },
-        subtitle = { SubtitleSection(subtitle) }
+        toolbarRightContent = toolbarRightContent,
+        subtitle = { SubtitleContent(subtitle) }
     )
 }
 
@@ -65,12 +66,7 @@ private fun BackArrowIcon(onClick: () -> Unit) {
 }
 
 @Composable
-private fun InfoText() {
-    Text(text = "$0.00")
-}
-
-@Composable
-private fun SubtitleSection(subtitle: String?) {
+private fun SubtitleContent(subtitle: String?) {
     Row(
         modifier = Modifier
             .fillMaxWidth()

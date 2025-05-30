@@ -33,7 +33,7 @@ fun AppScaffold(
         Column(
             modifier = Modifier
                 .padding(innerPadding)
-                .padding(start = 8.dp, end = 8.dp, top = 16.dp)
+                .padding(8.dp)
         ) {
             content()
         }

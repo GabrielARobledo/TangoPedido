@@ -32,21 +32,13 @@ android {
             buildConfigField("String", "API_BASE_URL", "\"${property("API_BASE_URL_RELEASE")}\"")
             buildConfigField("String", "API_TOKEN", "\"${property("API_TOKEN_RELEASE")}\"")
             buildConfigField("int", "API_COMPANY", property("API_COMPANY_RELEASE").toString())
-            buildConfigField(
-                "boolean",
-                "LOGIN_REQUIRED",
-                property("LOGIN_REQUIRED_RELEASE").toString()
-            )
+            buildConfigField("boolean", "LOGIN_REQUIRED", property("LOGIN_REQUIRED_RELEASE").toString())
         }
         debug {
             buildConfigField("String", "API_BASE_URL", "\"${property("API_BASE_URL_DEBUG")}\"")
             buildConfigField("String", "API_TOKEN", "\"${property("API_TOKEN_DEBUG")}\"")
             buildConfigField("int", "API_COMPANY", property("API_COMPANY_DEBUG").toString())
-            buildConfigField(
-                "boolean",
-                "LOGIN_REQUIRED",
-                property("LOGIN_REQUIRED_DEBUG").toString()
-            )
+            buildConfigField("boolean", "LOGIN_REQUIRED", property("LOGIN_REQUIRED_DEBUG").toString())
         }
     }
     compileOptions {

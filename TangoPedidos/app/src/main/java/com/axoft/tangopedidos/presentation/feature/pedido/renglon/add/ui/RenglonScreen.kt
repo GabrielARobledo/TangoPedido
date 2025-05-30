@@ -1,4 +1,4 @@
-package com.axoft.tangopedidos.presentation.feature.pedido.renglon.ui
+package com.axoft.tangopedidos.presentation.feature.pedido.renglon.add.ui
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

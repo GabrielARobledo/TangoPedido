@@ -20,6 +20,7 @@ fun HomeScaffold(
     navController: NavHostController,
     pedidoViewModel: PedidoViewModel,
     arrowBack: Boolean = true,
+    toolbarRightContent: @Composable () -> Unit = {},
     floatingActionButton: @Composable () -> Unit = {},
     content: @Composable () -> Unit,
 ) {
@@ -29,6 +30,7 @@ fun HomeScaffold(
             HomeToolbar(
                 subtitle = pedidoViewModel.getNombreVendedorLogged(),
                 arrowBack = arrowBack,
+                toolbarRightContent = { toolbarRightContent() },
                 backOnClick = { navController.popBackStack() })
         },
         content = { content() }

@@ -2,6 +2,7 @@ package com.axoft.tangopedidos.presentation.feature.pedido.pedido.add
 
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -32,7 +33,10 @@ fun PedidoNewScreen(navController: NavHostController) {
     val pedidoViewModel = pedidoViewModel()
     val pedido by pedidoViewModel.pedido.collectAsState()
 
-    HomeScaffold(navController, pedidoViewModel) {
+    HomeScaffold(
+        navController = navController,
+        pedidoViewModel = pedidoViewModel, toolbarRightContent = { Text("$0.00") }
+    ) {
         SelectCard(
             label = ScreenLabels.Cliente,
             value = "Seleccionar cliente",

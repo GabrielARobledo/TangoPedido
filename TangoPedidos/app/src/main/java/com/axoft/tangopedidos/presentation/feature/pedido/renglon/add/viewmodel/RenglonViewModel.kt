@@ -1,4 +1,4 @@
-package com.axoft.tangopedidos.presentation.feature.pedido.renglon.viewmodel
+package com.axoft.tangopedidos.presentation.feature.pedido.renglon.add.viewmodel
 
 import androidx.lifecycle.ViewModel
 import javax.inject.Inject

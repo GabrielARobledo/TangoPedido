@@ -10,7 +10,7 @@ import com.axoft.tangopedidos.presentation.feature.pedido.cliente.ui.ClienteScre
 import com.axoft.tangopedidos.presentation.feature.pedido.pedido.add.PedidoNewScreen
 import com.axoft.tangopedidos.presentation.feature.pedido.pedido.lookup.screen.PedidoScreen
 import com.axoft.tangopedidos.presentation.feature.pedido.renglon.edit.RenglonEditScreen
-import com.axoft.tangopedidos.presentation.feature.pedido.renglon.ui.RenglonScreen
+import com.axoft.tangopedidos.presentation.feature.pedido.renglon.add.ui.RenglonScreen
 
 /**
  * appNavGraph
