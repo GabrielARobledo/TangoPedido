@@ -11,9 +11,22 @@ import androidx.navigation.NavHostController
 import com.axoft.tangopedido.presentation.common.ui.component.card.SelectCard
 import com.axoft.tangopedido.presentation.common.ui.component.scaffold.HomeScaffold
 import com.axoft.tangopedido.presentation.common.utils.constant.ScreenLabels
-import com.axoft.tangopedido.presentation.feature.core.app.navigation.AppNavigation
+import com.axoft.tangopedido.presentation.feature.app.navigation.AppNavigation
 import com.axoft.tangopedido.presentation.shared.ui.pedidoViewModel
 
+/**
+ * Pantalla principal para crear un nuevo pedido.
+ *
+ * Esta pantalla permite al usuario seleccionar:
+ * - El cliente para el pedido
+ * - Los renglones (ítems) a incluir
+ * - Las promociones aplicables
+ *
+ * Usa HomeScaffold para estructurar la vista general y
+ * SelectCard para cada uno de los pasos principales.
+ *
+ * @param navController Controlador de navegación para manejar los flujos entre pantallas.
+ */
 @Composable
 fun PedidoNewScreen(navController: NavHostController) {
     val pedidoViewModel = pedidoViewModel()

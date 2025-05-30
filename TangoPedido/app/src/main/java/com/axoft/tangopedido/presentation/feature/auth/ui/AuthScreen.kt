@@ -10,7 +10,7 @@ import com.axoft.tangopedido.presentation.common.ui.component.scaffold.AppScaffo
 import com.axoft.tangopedido.presentation.common.ui.component.text.ControlText
 import com.axoft.tangopedido.presentation.common.utils.constant.ScreenLabels
 import com.axoft.tangopedido.presentation.feature.auth.viewmodel.AuthViewModel
-import com.axoft.tangopedido.presentation.feature.core.app.navigation.AppNavigation
+import com.axoft.tangopedido.presentation.feature.app.navigation.AppNavigation
 
 /**
  * LoginScreen

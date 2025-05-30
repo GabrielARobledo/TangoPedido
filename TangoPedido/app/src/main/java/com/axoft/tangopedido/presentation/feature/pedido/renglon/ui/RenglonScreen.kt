@@ -26,7 +26,7 @@ import com.axoft.tangopedido.presentation.common.ui.component.floating.FloatingA
 import com.axoft.tangopedido.presentation.common.ui.component.scaffold.HomeScaffold
 import com.axoft.tangopedido.presentation.common.ui.component.text.ControlText
 import com.axoft.tangopedido.presentation.common.utils.constant.ScreenLabels
-import com.axoft.tangopedido.presentation.feature.core.app.navigation.AppNavigation
+import com.axoft.tangopedido.presentation.feature.app.navigation.AppNavigation
 import com.axoft.tangopedido.presentation.shared.ui.pedidoViewModel
 
 /**

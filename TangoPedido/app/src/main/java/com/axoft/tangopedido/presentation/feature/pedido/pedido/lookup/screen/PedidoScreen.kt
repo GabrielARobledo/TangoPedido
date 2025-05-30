@@ -30,11 +30,25 @@ import com.axoft.tangopedido.presentation.common.ui.component.scaffold.HomeScaff
 import com.axoft.tangopedido.presentation.common.ui.component.text.ControlText
 import com.axoft.tangopedido.presentation.common.utils.constant.ScreenLabels
 import com.axoft.tangopedido.presentation.common.utils.state.UiState
-import com.axoft.tangopedido.presentation.feature.core.app.navigation.AppNavigation
+import com.axoft.tangopedido.presentation.feature.app.navigation.AppNavigation
 import com.axoft.tangopedido.presentation.feature.pedido.pedido.lookup.viewmodel.PedidoViewModel
 import com.axoft.tangopedido.presentation.model.view.PedidoUi
 import com.axoft.tangopedido.presentation.shared.ui.pedidoViewModel
 
+/**
+ * Pantalla principal que muestra la lista de pedidos existentes.
+ *
+ * Esta pantalla gestiona tres estados visuales:
+ * - Cargando (Loading): Muestra un indicador circular de progreso.
+ * - Éxito (Success): Muestra una lista (LazyColumn) de pedidos usando PedidoCard.
+ * - Error (Error): Muestra un ícono y mensaje de error.
+ *
+ * Además, incluye:
+ * - Un botón flotante (FloatingActionAdd) para crear un nuevo pedido.
+ * - Un topbar controlado por HomeScaffold.
+ *
+ * @param navController Controlador de navegación para gestionar cambios de pantalla.
+ */
 @Composable
 fun PedidoScreen(navController: NavHostController) {
     val pedidoAppViewModel = pedidoViewModel()

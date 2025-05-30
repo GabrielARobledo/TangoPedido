@@ -1,9 +1,9 @@
-package com.axoft.tangopedido.presentation.feature.core.app.viewmodel
+package com.axoft.tangopedido.presentation.feature.app.viewmodel
 
 import androidx.lifecycle.ViewModel
 import com.axoft.tangopedido.BuildConfig
 import com.axoft.tangopedido.data.repository.app.SessionRepository
-import com.axoft.tangopedido.presentation.feature.core.app.navigation.AppNavigation
+import com.axoft.tangopedido.presentation.feature.app.navigation.AppNavigation
 import com.axoft.tangopedido.presentation.model.view.ItemCard
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject

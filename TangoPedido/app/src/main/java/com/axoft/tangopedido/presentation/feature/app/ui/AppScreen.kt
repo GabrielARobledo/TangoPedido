@@ -1,10 +1,10 @@
-package com.axoft.tangopedido.presentation.feature.core.app.ui
+package com.axoft.tangopedido.presentation.feature.app.ui
 
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.rememberNavController
 import com.axoft.tangopedido.presentation.common.ui.component.animation.SlideNavHost
-import com.axoft.tangopedido.presentation.feature.core.app.viewmodel.AppViewModel
+import com.axoft.tangopedido.presentation.feature.app.viewmodel.AppViewModel
 
 /**
  * AppScreen

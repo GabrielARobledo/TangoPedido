@@ -1,4 +1,4 @@
-package com.axoft.tangopedido.presentation.feature.core.app.navigation
+package com.axoft.tangopedido.presentation.feature.app.navigation
 
 /**
  * AppNavigation

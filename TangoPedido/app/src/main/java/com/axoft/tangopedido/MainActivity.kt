@@ -5,7 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import com.axoft.tangopedido.presentation.common.ui.theme.TangoPedidoTheme
-import com.axoft.tangopedido.presentation.feature.core.app.ui.AppScreen
+import com.axoft.tangopedido.presentation.feature.app.ui.AppScreen
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

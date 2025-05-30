@@ -1,15 +1,15 @@
-package com.axoft.tangopedido.presentation.feature.core.app.ui
+package com.axoft.tangopedido.presentation.feature.app.ui
 
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
-import com.axoft.tangopedido.presentation.feature.pedido.articulo.ui.ArticuloScreen
-import com.axoft.tangopedido.presentation.feature.pedido.articulo.edit.ArticuloEditScreen
-import com.axoft.tangopedido.presentation.feature.pedido.cliente.ui.ClienteScreen
+import com.axoft.tangopedido.presentation.feature.app.navigation.AppNavigation
 import com.axoft.tangopedido.presentation.feature.auth.ui.LoginScreen
-import com.axoft.tangopedido.presentation.feature.core.app.navigation.AppNavigation
+import com.axoft.tangopedido.presentation.feature.pedido.articulo.ui.ArticuloScreen
+import com.axoft.tangopedido.presentation.feature.pedido.cliente.ui.ClienteScreen
 import com.axoft.tangopedido.presentation.feature.pedido.pedido.add.PedidoNewScreen
 import com.axoft.tangopedido.presentation.feature.pedido.pedido.lookup.screen.PedidoScreen
+import com.axoft.tangopedido.presentation.feature.pedido.renglon.edit.RenglonEditScreen
 import com.axoft.tangopedido.presentation.feature.pedido.renglon.ui.RenglonScreen
 
 /**
@@ -37,14 +37,14 @@ fun NavGraphBuilder.appNavGraph(
     composable(AppNavigation.Cliente.route) {
         ClienteScreen(navController)
     }
-    composable(AppNavigation.Renglon.route) {
-        RenglonScreen(navController)
-    }
     composable(AppNavigation.Articulo.route) {
         ArticuloScreen(navController)
     }
+    composable(AppNavigation.Renglon.route) {
+        RenglonScreen(navController)
+    }
     composable(AppNavigation.ArticuloEdit.route) {
-        ArticuloEditScreen(navController)
+        RenglonEditScreen(navController)
     }
     composable(AppNavigation.Promociones.route) {
     }

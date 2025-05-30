@@ -1,4 +1,4 @@
-package com.axoft.tangopedido.presentation.feature.pedido.articulo.edit
+package com.axoft.tangopedido.presentation.feature.pedido.renglon.edit
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
@@ -17,7 +17,7 @@ import com.axoft.tangopedido.presentation.shared.ui.pedidoViewModel
  * @param navController Controlador de navegación para gestionar los cambios de pantalla.
  */
 @Composable
-fun ArticuloEditScreen(navController: NavHostController) {
+fun RenglonEditScreen(navController: NavHostController) {
     val pedidoViewModel = pedidoViewModel()
 
     HomeScaffold(navController, pedidoViewModel) {

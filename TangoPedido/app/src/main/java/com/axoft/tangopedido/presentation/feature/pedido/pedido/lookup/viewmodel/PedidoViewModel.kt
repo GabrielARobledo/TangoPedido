@@ -15,6 +15,19 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+/**
+ * ViewModel encargado de gestionar el estado de la lista de pedidos.
+ *
+ * Usa un StateFlow expuesto como UiState<List<PedidoUi>> para representar:
+ * - Loading: cuando se está cargando la información.
+ * - Success: cuando se cargaron correctamente los pedidos.
+ * - Error: cuando ocurre un fallo al obtener los pedidos.
+ *
+ * Obtiene los datos usando el caso de uso [GetPedidosUseCase] y los mapea a [PedidoUi]
+ * usando el mapper toPedidoUi().
+ *
+ * @property getPedidosUseCase Caso de uso inyectado para obtener la lista de pedidos.
+ */
 @HiltViewModel
 class PedidoViewModel @Inject constructor(private val getPedidosUseCase: GetPedidosUseCase) :
     ViewModel() {
