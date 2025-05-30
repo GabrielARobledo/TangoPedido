@@ -7,6 +7,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
+/**
+ * ControlText
+ *
+ * Composable que muestra un texto en mayúsculas, alineado a la izquierda con padding,
+ * usando el tamaño de fuente definido por el estilo bodySmall del tema actual.
+ * Ideal para rotular campos, etiquetas o pequeños encabezados dentro de formularios o listas.
+ *
+ * @param text Texto a mostrar en mayúsculas.
+ */
 @Composable
 fun ControlText(text: String) {
     Text(

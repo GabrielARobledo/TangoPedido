@@ -4,31 +4,44 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import com.axoft.tangopedido.presentation.common.ui.component.progress.CircularProgressCustom
+import androidx.compose.ui.graphics.vector.ImageVector
+import com.axoft.tangopedido.presentation.common.ui.component.progress.CircularLoadingWithText
 import com.axoft.tangopedido.presentation.common.utils.state.UiState
 import com.axoft.tangopedido.presentation.model.view.contract.SimpleCardDisplayable
 
 /**
- * Composable genérico para listar entidades que implementan SimpleCardDisplayable
- * mostrando estados de Loading, Success y Error.
+ * LoadItemCard
+ *
+ * Composable genérico que muestra una lista de entidades que implementan SimpleCardDisplayable,
+ * manejando los estados de carga (Loading), éxito (Success) y error (Error).
+ * Es ideal para representar listados reutilizables que consumen datos asincrónicos.
+ *
+ * @param state Estado actual (UiState) que contiene la lista de datos o el estado de carga/error.
+ * @param imageIcon Icono opcional a mostrar en cada item de la lista.
+ * @param onClick Acción a ejecutar cuando se selecciona un item.
  */
 @Composable
 fun <T : SimpleCardDisplayable> LoadItemCard(
     state: UiState<List<T>>,
+    imageIcon: ImageVector? = null,
     onClick: (T) -> Unit
 ) {
     when (state) {
-        is UiState.Loading -> CircularProgressCustom(state.label)
-        is UiState.Success -> SuccessResult(state.data, onClick)
+        is UiState.Loading -> CircularLoadingWithText(state.label)
+        is UiState.Success -> SuccessStateView(state.data, imageIcon, onClick)
         is UiState.Error -> ErrorStateView(state.message)
     }
 }
 
 @Composable
-private fun <T : SimpleCardDisplayable> SuccessResult(data: List<T>, onClick: (T) -> Unit) {
+private fun <T : SimpleCardDisplayable> SuccessStateView(
+    data: List<T>,
+    imageIcon: ImageVector?,
+    onClick: (T) -> Unit
+) {
     Column {
         data.forEach { item ->
-            InfoCard(item = item) { item ->
+            InfoCard(item = item, imageIcon = imageIcon) { item ->
                 onClick(item)
             }
         }

@@ -18,34 +18,49 @@ import androidx.compose.ui.unit.dp
 import com.axoft.tangopedido.presentation.common.ui.component.text.ControlText
 import com.axoft.tangopedido.presentation.common.ui.theme.hint
 
+/**
+ * SelectCard
+ *
+ * Composable que representa una tarjeta seleccionable con una etiqueta y un valor,
+ * mostrando un ícono indicativo a la derecha para denotar navegación o acción pendiente.
+ * Ideal para representar campos que abren un selector o una nueva pantalla al hacer clic.
+ *
+ * @param label Texto de la etiqueta que describe el campo.
+ * @param value Texto por defecto a mostrar si no hay valor seleccionado.
+ * @param valueSelected Valor seleccionado actual (opcional); si es null, se muestra el valor por defecto.
+ * @param onClick Acción a ejecutar cuando se hace clic en la tarjeta.
+ */
 @Composable
-fun SelectCard(
-    label: String, value: String, valueSelected: String? = null, onClick: () -> Unit
-) {
+fun SelectCard(label: String, value: String, valueSelected: String? = null, onClick: () -> Unit) {
     ControlText(label)
     SimpleCard<Int>(1, { onClick() }) {
-        Row(
+        SelectCardBody(value, valueSelected)
+    }
+}
+
+@Composable
+private fun SelectCardBody(value: String, valueSelected: String? = null) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(8.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text(
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(8.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Text(
-                modifier = Modifier
-                    .weight(1f)
-                    .padding(start = 8.dp),
-                text = valueSelected ?: value,
-                style = MaterialTheme.typography.labelLarge,
-                color = if (valueSelected == null) MaterialTheme.colorScheme.hint else Color.Unspecified,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis
-            )
-            Icon(
-                imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
-                contentDescription = null,
-                tint = MaterialTheme.colorScheme.primary,
-                modifier = Modifier.size(30.dp)
-            )
-        }
+                .weight(1f)
+                .padding(start = 8.dp),
+            text = valueSelected ?: value,
+            style = MaterialTheme.typography.labelLarge,
+            color = if (valueSelected == null) MaterialTheme.colorScheme.hint else Color.Unspecified,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis
+        )
+        Icon(
+            imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
+            contentDescription = null,
+            tint = MaterialTheme.colorScheme.primary,
+            modifier = Modifier.size(30.dp)
+        )
     }
 }

@@ -15,6 +15,21 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.axoft.tangopedido.presentation.common.ui.component.text.TitleText
 
+/**
+ * AppToolbar
+ *
+ * Composable que define la barra superior general reutilizable de la aplicación.
+ * Incluye un bloque para el ícono de navegación (por ejemplo, back), un título principal fijo
+ * ("Tango Pedido"), un bloque opcional de información adicional, y una sección opcional
+ * para subtítulos o elementos colocados debajo de la barra principal.
+ *
+ * Está diseñado como un contenedor flexible que puede ser adaptado por scaffolds especializados
+ * como HomeToolbar o LookupScaffold.
+ *
+ * @param navigationIcon Composable opcional para mostrar un ícono de navegación (ej. back).
+ * @param info Composable opcional para mostrar información adicional a la derecha del título.
+ * @param subtitle Composable opcional que se coloca debajo de la barra principal (ej. subtítulos dinámicos).
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AppToolbar(
@@ -26,7 +41,7 @@ fun AppToolbar(
         TopAppBar(
             modifier = Modifier.height(80.dp),
             navigationIcon = navigationIcon,
-            title = { ToolbarTopSection(info) },
+            title = { TitleContent(info) },
             colors = TopAppBarDefaults.topAppBarColors(
                 containerColor = MaterialTheme.colorScheme.primary,
                 titleContentColor = MaterialTheme.colorScheme.onPrimary,
@@ -39,7 +54,7 @@ fun AppToolbar(
 }
 
 @Composable
-fun ToolbarTopSection(info: @Composable () -> Unit) {
+private fun TitleContent(info: @Composable () -> Unit) {
     Row(verticalAlignment = Alignment.CenterVertically) {
         TitleText("Tango Pedido")
         Spacer(modifier = Modifier.weight(1f))

@@ -10,6 +10,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
+/**
+ * SimpleCard
+ *
+ * Composable genérico que actúa como contenedor estilizado para tarjetas (Cards).
+ * Encapsula estilo, forma, colores y manejo de clic, permitiendo reutilizarlo
+ * con diferentes tipos de contenido y modelos de datos.
+ *
+ * @param item Objeto asociado al card, pasado al callback onClick cuando se presiona.
+ * @param onClick Acción a ejecutar al hacer clic en el card, recibiendo el objeto item.
+ * @param content Contenido composable interno a renderizar dentro del card.
+ */
 @Composable
 fun <T> SimpleCard(
     item: T,

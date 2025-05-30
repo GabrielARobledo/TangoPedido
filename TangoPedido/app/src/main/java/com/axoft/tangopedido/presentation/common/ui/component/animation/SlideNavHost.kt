@@ -11,6 +11,19 @@ import androidx.navigation.compose.NavHost
 
 const val SLIDE_ANIMATION_DURATION_MS = 300
 
+/**
+ * SlideNavHost
+ *
+ * Composable que envuelve el NavHost de Jetpack Compose añadiendo transiciones
+ * de entrada y salida animadas de tipo slide horizontal.
+ * Define las animaciones para navegar entre pantallas (enter, exit, popEnter, popExit),
+ * usando una duración configurable por constante.
+ *
+ * @param modifier Modificador Compose opcional para personalizar el layout externo.
+ * @param navController Controlador de navegación para gestionar el stack de pantallas.
+ * @param startDestination Ruta inicial de la navegación.
+ * @param builder Bloque de construcción que define el gráfico de navegación.
+ */
 @Composable
 fun SlideNavHost(
     modifier: Modifier = Modifier,

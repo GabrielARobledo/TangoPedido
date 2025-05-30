@@ -2,8 +2,6 @@ package com.axoft.tangopedido.presentation.common.ui.component.textfield
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Text
@@ -14,6 +12,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
+/**
+ * CustomTextField
+ *
+ * Composable que representa un campo de texto personalizado, estilizado con borde redondeado,
+ * fondo transparente y colores definidos manualmente.
+ * Ideal para formularios y entradas de datos donde se busca un diseño consistente y minimalista.
+ *
+ * @param modifier Modificador Compose opcional para personalizar el layout externo.
+ * @param label Texto de etiqueta que describe el campo.
+ * @param value Valor actual del texto.
+ * @param keyboardOptions Opciones del teclado (por defecto, teclado estándar).
+ * @param onValueChange Callback que recibe el nuevo valor cuando el texto cambia.
+ */
 @Composable
 fun CustomTextField(
     modifier: Modifier = Modifier,

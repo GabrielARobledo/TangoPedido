@@ -7,8 +7,17 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 
-/*
-Acción principal o más destacada
+/**
+ * PrimaryButton
+ *
+ * Composable que representa el botón principal o destacado de la interfaz,
+ * estilizado con los colores primarios definidos en el MaterialTheme.
+ * Ideal para acciones principales en una pantalla.
+ *
+ * @param text Texto a mostrar dentro del botón.
+ * @param modifier Modificador Compose opcional para personalizar el layout externo.
+ * @param enabled Indica si el botón está habilitado (por defecto true).
+ * @param onClick Acción a ejecutar cuando se hace clic en el botón.
  */
 @Composable
 fun PrimaryButton(
