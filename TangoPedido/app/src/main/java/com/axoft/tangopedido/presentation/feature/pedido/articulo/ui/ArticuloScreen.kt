@@ -2,9 +2,9 @@ package com.axoft.tangopedido.presentation.feature.pedido.articulo.ui
 
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.FavoriteBorder
-import androidx.compose.material.icons.filled.Person
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -35,18 +35,25 @@ import com.axoft.tangopedido.presentation.shared.ui.pedidoViewModel
 fun ArticuloScreen(navController: NavHostController) {
     val pedidoViewModel = pedidoViewModel()
     val articuloViewModel: ArticuloViewModel = hiltViewModel()
+    val articuloState by articuloViewModel.articulos.collectAsState()
+
+    var searchText by remember { mutableStateOf("") }
 
     LookupScaffold(navController, pedidoViewModel) {
-        var searchText by remember { mutableStateOf("") }
-
         ControlText("Artículo")
         CustomTextField(label = "Buscar", value = searchText) { searchText = it }
         Spacer(modifier = Modifier.height(8.dp))
-        val articuloState by articuloViewModel.articulos.collectAsState()
 
-        LoadItemCard(state = articuloState, imageIcon = Icons.Default.FavoriteBorder) { itemSelected ->
-            pedidoViewModel.addArticulo(itemSelected)
-            navController.popBackStack()
+        LazyColumn {
+            item {
+                LoadItemCard(
+                    state = articuloState,
+                    imageIcon = Icons.Default.FavoriteBorder
+                ) { itemSelected ->
+                    pedidoViewModel.addArticulo(itemSelected)
+                    navController.popBackStack()
+                }
+            }
         }
     }
 }

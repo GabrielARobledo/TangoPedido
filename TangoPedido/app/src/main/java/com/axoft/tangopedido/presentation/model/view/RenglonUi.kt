@@ -16,7 +16,7 @@ package com.axoft.tangopedido.presentation.model.view
  * @property precio Precio unitario del artículo.
  * @property importe Importe total (precio * cantidad).
  */
-data class RenglonCard(
+data class RenglonUi(
     val id: Int,
     val codigo: String,
     val descripcion: String,

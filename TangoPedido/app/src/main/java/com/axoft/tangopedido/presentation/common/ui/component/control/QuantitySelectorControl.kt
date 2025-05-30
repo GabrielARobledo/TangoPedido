@@ -2,12 +2,11 @@ package com.axoft.tangopedido.presentation.common.ui.component.control
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
-import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Remove
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -43,12 +42,11 @@ fun QuantitySelectorControl(
     modifier: Modifier = Modifier
 ) {
     Row(
-        modifier = modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.End,
+        horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically
     ) {
         IconButton(
-            modifier = Modifier.size(25.dp),
+            modifier = Modifier.size(32.dp),
             onClick = {
                 val nuevaCantidad = (cantidad - step).coerceAtLeast(min)
                 onCantidadChanged(nuevaCantidad)
@@ -56,7 +54,7 @@ fun QuantitySelectorControl(
             enabled = cantidad > min
         ) {
             Icon(
-                imageVector = Icons.AutoMirrored.Filled.KeyboardArrowLeft,
+                imageVector = Icons.Default.Remove,
                 contentDescription = "Disminuir",
                 tint = MaterialTheme.colorScheme.primary
             )
@@ -64,12 +62,12 @@ fun QuantitySelectorControl(
 
         Text(
             text = "${"%.2f".format(cantidad)} $unidades",
-            style = MaterialTheme.typography.bodyMedium,
+            style = MaterialTheme.typography.bodyLarge,
             modifier = Modifier.padding(horizontal = 8.dp)
         )
 
         IconButton(
-            modifier = Modifier.size(20.dp),
+            modifier = Modifier.size(32.dp),
             onClick = {
                 val nuevaCantidad = (cantidad + step).coerceAtMost(max)
                 onCantidadChanged(nuevaCantidad)
@@ -77,7 +75,7 @@ fun QuantitySelectorControl(
             enabled = cantidad < max
         ) {
             Icon(
-                imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
+                imageVector = Icons.Default.Add,
                 contentDescription = "Aumentar",
                 tint = MaterialTheme.colorScheme.primary
             )

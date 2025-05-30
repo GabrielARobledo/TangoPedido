@@ -33,7 +33,7 @@ fun <T : SimpleCardDisplayable> InfoCard(
     imageIcon: ImageVector? = null,
     onClick: (T) -> Unit
 ) {
-    SimpleCard<T>(item = item, onClick = { onClick(item) }) {
+    BaseCard<T>(item = item, onClick = { onClick(item) }) {
         InfoCardBody(item, imageIcon)
     }
 }
@@ -43,20 +43,9 @@ private fun <T : SimpleCardDisplayable> InfoCardBody(item: T, imageIcon: ImageVe
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(8.dp),
+            .padding(horizontal = 16.dp, vertical = 8.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        if (imageIcon != null) {
-            Icon(
-                imageVector = imageIcon,
-                contentDescription = null,
-                tint = MaterialTheme.colorScheme.primary,
-                modifier = Modifier
-                    .size(40.dp)
-                    .padding(end = 12.dp)
-            )
-        }
-
         Column(modifier = Modifier.weight(1f)) {
             Text(
                 text = item.codigo.orEmpty(),
@@ -69,6 +58,16 @@ private fun <T : SimpleCardDisplayable> InfoCardBody(item: T, imageIcon: ImageVe
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
+            )
+        }
+        if (imageIcon != null) {
+            Icon(
+                imageVector = imageIcon,
+                contentDescription = null,
+                tint = MaterialTheme.colorScheme.primary,
+                modifier = Modifier
+                    .size(40.dp)
+                    .padding(end = 12.dp)
             )
         }
     }

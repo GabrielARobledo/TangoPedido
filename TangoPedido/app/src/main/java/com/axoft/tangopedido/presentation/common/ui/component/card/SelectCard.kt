@@ -33,7 +33,7 @@ import com.axoft.tangopedido.presentation.common.ui.theme.hint
 @Composable
 fun SelectCard(label: String, value: String, valueSelected: String? = null, onClick: () -> Unit) {
     ControlText(label)
-    SimpleCard<Int>(1, { onClick() }) {
+    BaseCard<Int>(1, { onClick() }) {
         SelectCardBody(value, valueSelected)
     }
 }
@@ -43,13 +43,12 @@ private fun SelectCardBody(value: String, valueSelected: String? = null) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(8.dp),
+            .padding(horizontal = 16.dp, vertical = 8.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
             modifier = Modifier
-                .weight(1f)
-                .padding(start = 8.dp),
+                .weight(1f),
             text = valueSelected ?: value,
             style = MaterialTheme.typography.labelLarge,
             color = if (valueSelected == null) MaterialTheme.colorScheme.hint else Color.Unspecified,

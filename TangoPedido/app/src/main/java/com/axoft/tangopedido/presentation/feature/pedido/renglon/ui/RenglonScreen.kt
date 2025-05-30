@@ -1,12 +1,34 @@
 package com.axoft.tangopedido.presentation.feature.pedido.renglon.ui
 
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.ShoppingCart
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.axoft.tangopedido.presentation.common.ui.component.card.RenglonCard
 import com.axoft.tangopedido.presentation.common.ui.component.scaffold.LookupScaffold
 import com.axoft.tangopedido.presentation.common.ui.component.text.ControlText
+import com.axoft.tangopedido.presentation.common.utils.constant.ScreenLabels
 import com.axoft.tangopedido.presentation.feature.core.app.navigation.AppNavigation
 import com.axoft.tangopedido.presentation.shared.ui.pedidoViewModel
 
@@ -29,13 +51,51 @@ fun RenglonScreen(navController: NavHostController) {
     LookupScaffold(
         navController = navController,
         pedidoViewModel = pedidoViewModel,
-        floatingActionButton = { RenglonFooter(navController) }) {
-
-        ControlText("Renglones")
-        pedido.articulos.forEach { renglon ->
-            RenglonCard(renglonCard = renglon) {
-                navController.navigate(AppNavigation.ArticuloEdit.route)
+        floatingActionButton = { RenglonFooter(navController) }
+    ) {
+        ControlText(ScreenLabels.Articulo)
+        if (pedido.renglones.isEmpty()) {
+            Column(
+                modifier = Modifier.fillMaxSize(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
+                Icon(
+                    imageVector = Icons.Default.ShoppingCart,
+                    contentDescription = "Sin artículos",
+                    modifier = Modifier.size(64.dp),
+                    tint = Color.Gray
+                )
+                Spacer(modifier = Modifier.height(16.dp))
+                Text(
+                    text = "No hay renglones cargados aún.",
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = Color.Gray
+                )
+            }
+        } else {
+            LazyColumn {
+                items(pedido.renglones) { renglon ->
+                    RenglonCard(renglonUi = renglon) {
+                        navController.navigate(AppNavigation.ArticuloEdit.route)
+                    }
+                }
             }
         }
+    }
+}
+
+@Composable
+private fun RenglonFooter(navController: NavHostController) {
+    FloatingActionButton(
+        modifier = Modifier.clip(CircleShape),
+        containerColor = MaterialTheme.colorScheme.primary,
+        contentColor = Color.White,
+        onClick = { navController.navigate(AppNavigation.Articulo.route) }
+    ) {
+        Icon(
+            imageVector = Icons.Filled.Add,
+            contentDescription = "Add"
+        )
     }
 }

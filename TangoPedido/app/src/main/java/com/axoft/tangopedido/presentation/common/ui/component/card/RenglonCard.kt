@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -17,7 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.axoft.tangopedido.presentation.common.ui.component.control.QuantitySelectorControl
-import com.axoft.tangopedido.presentation.model.view.RenglonCard
+import com.axoft.tangopedido.presentation.model.view.RenglonUi
 
 /**
  * RenglonCard
@@ -26,64 +27,77 @@ import com.axoft.tangopedido.presentation.model.view.RenglonCard
  * incluyendo el código, descripción, precio, importe y un selector interactivo
  * para ajustar la cantidad pedida.
  *
- * @param renglonCard Datos del renglón a mostrar.
+ * @param renglonUi Datos del renglón a mostrar.
  * @param onClick Acción a ejecutar cuando se hace clic en la tarjeta.
  */
 @Composable
 fun RenglonCard(
-    renglonCard: RenglonCard,
+    renglonUi: RenglonUi,
     onClick: () -> Unit
 ) {
-    SimpleCard<Int>(1, { onClick() }) {
-        RenglonCardBody(renglonCard)
+    BaseCard(
+        item = renglonUi,
+        onClick = { onClick() }
+    ) {
+        RenglonCardBody(renglonUi)
     }
 }
 
 @Composable
-private fun RenglonCardBody(renglonCard: RenglonCard) {
+private fun RenglonCardBody(renglonCard: RenglonUi) {
     var cantidad by remember { mutableFloatStateOf(renglonCard.cantidadPedida) }
 
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 8.dp),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Column(modifier = Modifier.weight(1f)) {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
+    Column(modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text(
+                text = renglonCard.codigo,
+                style = MaterialTheme.typography.titleMedium,
+                fontWeight = FontWeight.Bold
+            )
+            Spacer(modifier = Modifier.weight(1f))
+            QuantitySelectorControl(
+                cantidad = cantidad,
+                onCantidadChanged = { cantidad = it },
+                step = 1f,
+                unidades = "un"
+            )
+        }
+
+        Text(
+            text = renglonCard.descripcion,
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Column {
                 Text(
-                    text = renglonCard.codigo,
-                    style = MaterialTheme.typography.titleMedium,
-                    fontWeight = FontWeight.Bold
+                    text = "Precio unit.",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
-                Spacer(modifier = Modifier.weight(1f))
-                QuantitySelectorControl(
-                    cantidad = cantidad,
-                    onCantidadChanged = { cantidad = it },
-                    step = 1f,
-                    unidades = "un"
+                Text(
+                    text = "$${renglonCard.precio}",
+                    style = MaterialTheme.typography.bodyMedium
                 )
             }
 
-            Text(
-                text = renglonCard.descripcion,
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f),
-                modifier = Modifier.padding(top = 4.dp)
-            )
+            Spacer(modifier = Modifier.weight(1f))
 
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
+            Column(horizontalAlignment = Alignment.End) {
                 Text(
-                    text = "$${renglonCard.precio}",
-                    style = MaterialTheme.typography.bodySmall,
+                    text = "Importe",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
-                Spacer(modifier = Modifier.weight(1f))
                 Text(
                     text = "$${renglonCard.importe}",
                     style = MaterialTheme.typography.bodyLarge,

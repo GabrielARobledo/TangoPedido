@@ -5,7 +5,7 @@ import com.axoft.tangopedido.data.repository.app.SessionRepository
 import com.axoft.tangopedido.presentation.common.utils.mapper.toRenglonCard
 import com.axoft.tangopedido.presentation.model.domain.Pedido
 import com.axoft.tangopedido.presentation.model.view.ItemCard
-import com.axoft.tangopedido.presentation.model.view.RenglonCard
+import com.axoft.tangopedido.presentation.model.view.RenglonUi
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -45,11 +45,11 @@ class PedidoViewModel @Inject constructor(
     }
 
     fun addArticulo(articulo: ItemCard) {
-        val renglonCard: RenglonCard = articulo.toRenglonCard()
+        val renglonCard: RenglonUi = articulo.toRenglonCard()
         val pedidoActual = _pedido.value
-        val nuevaLista = pedidoActual.articulos + renglonCard
+        val nuevaLista = pedidoActual.renglones + renglonCard
         _pedido.value = pedidoActual.copy(
-            articulos = nuevaLista,
+            renglones = nuevaLista,
             articuloSelected = articulo
         )
     }

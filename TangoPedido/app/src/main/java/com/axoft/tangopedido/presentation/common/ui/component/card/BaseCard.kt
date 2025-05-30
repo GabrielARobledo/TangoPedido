@@ -11,7 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 /**
- * SimpleCard
+ * BaseCard
  *
  * Composable genérico que actúa como contenedor estilizado para tarjetas (Cards).
  * Encapsula estilo, forma, colores y manejo de clic, permitiendo reutilizarlo
@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.dp
  * @param content Contenido composable interno a renderizar dentro del card.
  */
 @Composable
-fun <T> SimpleCard(
+fun <T> BaseCard(
     item: T,
     onClick: (T) -> Unit,
     content: @Composable () -> Unit = {}

@@ -30,7 +30,6 @@ fun HomeScreen(navController: NavHostController) {
     val pedido by pedidoViewModel.pedido.collectAsState()
 
     AppScaffold(
-        isScrollable = true,
         topBar = { HomeToolbar(pedidoViewModel.getNombreVendedorLogged()) }) {
         SelectCard(
             label = ScreenLabels.Cliente,

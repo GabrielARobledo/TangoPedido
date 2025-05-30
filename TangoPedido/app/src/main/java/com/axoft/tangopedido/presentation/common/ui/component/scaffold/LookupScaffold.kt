@@ -9,26 +9,21 @@ import com.axoft.tangopedido.presentation.shared.viewmodel.PedidoViewModel
 /**
  * LookupScaffold
  *
- * Composable especializado que envuelve la estructura base de pantallas tipo “lookup”
- * (selección/listado) usando AppScaffold. Integra una HomeToolbar con subtítulo dinámico
- * (nombre del vendedor) y back button, permitiendo inyectar contenido flexible y opcional
- * FloatingActionButton.
+ * Composable que envuelve AppScaffold usando una estructura común para pantallas de pedidos.
+ * - Muestra un HomeToolbar con el nombre del vendedor y botón de volver.
+ * - Permite agregar un FloatingActionButton opcional.
+ * - Recibe el contenido principal (content) que se muestra en la pantalla.
  *
- * @param navController Controlador de navegación usado para manejar el back stack.
- * @param pedidoViewModel ViewModel global que provee información del pedido actual.
- * @param floatingActionButton Composable opcional para incluir un FAB en la pantalla.
- * @param content Bloque composable que representa el contenido principal de la pantalla,
- * recibiendo los PaddingValues del scaffold.
+ * Sirve para evitar repetir la misma estructura en cada pantalla relacionada a pedidos.
  */
 @Composable
 fun LookupScaffold(
     navController: NavHostController,
     pedidoViewModel: PedidoViewModel,
     floatingActionButton: @Composable () -> Unit = {},
-    content: @Composable (PaddingValues) -> Unit,
+    content: @Composable () -> Unit,
 ) {
     AppScaffold(
-        isScrollable = true,
         floatingActionButton = floatingActionButton,
         topBar = {
             HomeToolbar(
@@ -36,7 +31,6 @@ fun LookupScaffold(
                 arrowBack = true,
                 backOnClick = { navController.popBackStack() })
         },
-    ) { innerPadding ->
-        content.invoke(innerPadding)
-    }
+        content = { content() }
+    )
 }

@@ -20,6 +20,6 @@ fun TitleText(text: String) {
     Text(
         text = text,
         fontSize = MaterialTheme.typography.titleLarge.fontSize,
-        fontWeight = FontWeight.Bold
+        fontWeight = FontWeight.Bold,
     )
 }

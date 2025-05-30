@@ -1,10 +1,10 @@
 package com.axoft.tangopedido.presentation.common.utils.mapper
 
 import com.axoft.tangopedido.presentation.model.view.ItemCard
-import com.axoft.tangopedido.presentation.model.view.RenglonCard
+import com.axoft.tangopedido.presentation.model.view.RenglonUi
 
-fun ItemCard.toRenglonCard(): RenglonCard {
-    return RenglonCard(
+fun ItemCard.toRenglonCard(): RenglonUi {
+    return RenglonUi(
         id = this.id,
         codigo = this.codigo ?: "",
         descripcion = this.descripcion ?: "",

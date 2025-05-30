@@ -17,6 +17,7 @@ import androidx.compose.runtime.Composable
 fun SubtitleText(text: String) {
     Text(
         text = text,
-        fontSize = MaterialTheme.typography.titleSmall.fontSize
+        fontSize = MaterialTheme.typography.titleSmall.fontSize,
+        color = MaterialTheme.colorScheme.onPrimary
     )
 }
