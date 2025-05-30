@@ -1,6 +1,7 @@
 package com.axoft.tangopedido.presentation.feature.core.app.viewmodel
 
 import androidx.lifecycle.ViewModel
+import com.axoft.tangopedido.BuildConfig
 import com.axoft.tangopedido.data.repository.app.SessionRepository
 import com.axoft.tangopedido.presentation.feature.core.app.navigation.AppNavigation
 import com.axoft.tangopedido.presentation.model.view.ItemCard
@@ -22,15 +23,21 @@ class AppViewModel @Inject constructor(
 ) :
     ViewModel() {
 
-    fun isAuthenticated(): Boolean {
-        return sessionRepository.getVendedor() != null
+    fun authenticateDebug() {
+        sessionRepository.setVendedor(ItemCard(1, "1", "WALTER AREVALO"))
     }
 
-    fun authenticate() {
-        sessionRepository.setVendedor(ItemCard(1, "ROBLEDO", "Gabriel Robledo"))
+    fun isAuthenticated(): Boolean {
+        // Sirve solo para el debug para agilizar el login.
+        if (BuildConfig.LOGIN_REQUIRED){
+            return sessionRepository.getVendedor() != null
+        }
+
+        authenticateDebug()
+        return true;
     }
 
     fun getStartRoute(): String {
-        return if (isAuthenticated()) AppNavigation.Home.route else AppNavigation.Login.route
+        return if (isAuthenticated()) AppNavigation.Pedido.route else AppNavigation.Login.route
     }
 }

@@ -14,7 +14,8 @@ package com.axoft.tangopedido.presentation.feature.core.app.navigation
  */
 sealed class AppNavigation(val route: String) {
     object Login : AppNavigation("login")
-    object Home : AppNavigation("home")
+    object Pedido : AppNavigation("pedido")
+    object NewPedido : AppNavigation("newpedido")
     object Cliente : AppNavigation("cliente")
     object Articulo : AppNavigation("articulo")
     object ArticuloEdit : AppNavigation("articuloedit")

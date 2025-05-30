@@ -19,6 +19,7 @@ import com.axoft.tangopedido.presentation.common.ui.component.card.LoadItemCard
 import com.axoft.tangopedido.presentation.common.ui.component.scaffold.LookupScaffold
 import com.axoft.tangopedido.presentation.common.ui.component.text.ControlText
 import com.axoft.tangopedido.presentation.common.ui.component.textfield.CustomTextField
+import com.axoft.tangopedido.presentation.common.utils.constant.ScreenLabels
 import com.axoft.tangopedido.presentation.feature.pedido.articulo.viewmodel.ArticuloViewModel
 import com.axoft.tangopedido.presentation.shared.ui.pedidoViewModel
 
@@ -40,20 +41,16 @@ fun ArticuloScreen(navController: NavHostController) {
     var searchText by remember { mutableStateOf("") }
 
     LookupScaffold(navController, pedidoViewModel) {
-        ControlText("Artículo")
+        ControlText(ScreenLabels.Articulo)
         CustomTextField(label = "Buscar", value = searchText) { searchText = it }
         Spacer(modifier = Modifier.height(8.dp))
 
-        LazyColumn {
-            item {
-                LoadItemCard(
-                    state = articuloState,
-                    imageIcon = Icons.Default.FavoriteBorder
-                ) { itemSelected ->
-                    pedidoViewModel.addArticulo(itemSelected)
-                    navController.popBackStack()
-                }
-            }
+        LoadItemCard(
+            state = articuloState,
+            imageIcon = Icons.Default.FavoriteBorder
+        ) { itemSelected ->
+            pedidoViewModel.addArticulo(itemSelected)
+            navController.popBackStack()
         }
     }
 }

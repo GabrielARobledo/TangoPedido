@@ -6,9 +6,10 @@ import androidx.navigation.compose.composable
 import com.axoft.tangopedido.presentation.feature.pedido.articulo.ui.ArticuloScreen
 import com.axoft.tangopedido.presentation.feature.pedido.articulo.edit.ArticuloEditScreen
 import com.axoft.tangopedido.presentation.feature.pedido.cliente.ui.ClienteScreen
-import com.axoft.tangopedido.presentation.feature.dashboard.home.HomeScreen
 import com.axoft.tangopedido.presentation.feature.auth.ui.LoginScreen
 import com.axoft.tangopedido.presentation.feature.core.app.navigation.AppNavigation
+import com.axoft.tangopedido.presentation.feature.pedido.pedido.add.PedidoNewScreen
+import com.axoft.tangopedido.presentation.feature.pedido.pedido.lookup.screen.PedidoScreen
 import com.axoft.tangopedido.presentation.feature.pedido.renglon.ui.RenglonScreen
 
 /**
@@ -27,8 +28,11 @@ fun NavGraphBuilder.appNavGraph(
     composable(AppNavigation.Login.route) {
         LoginScreen(navController)
     }
-    composable(AppNavigation.Home.route) {
-        HomeScreen(navController)
+    composable(AppNavigation.Pedido.route) {
+        PedidoScreen(navController)
+    }
+    composable(AppNavigation.NewPedido.route) {
+        PedidoNewScreen(navController)
     }
     composable(AppNavigation.Cliente.route) {
         ClienteScreen(navController)

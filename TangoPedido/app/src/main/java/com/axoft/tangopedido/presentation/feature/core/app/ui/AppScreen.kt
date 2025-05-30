@@ -25,9 +25,6 @@ fun AppScreen() {
     val appViewModel: AppViewModel = hiltViewModel()
     val navController = rememberNavController()
 
-    //Mock para tener sesion iniciada.
-    //mainViewModel.authenticate()
-
     SlideNavHost(
         navController = navController,
         startDestination = appViewModel.getStartRoute()

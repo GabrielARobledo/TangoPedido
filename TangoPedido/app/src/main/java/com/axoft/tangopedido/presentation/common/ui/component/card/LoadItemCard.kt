@@ -1,6 +1,7 @@
 package com.axoft.tangopedido.presentation.common.ui.component.card
 
-import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -39,8 +40,8 @@ private fun <T : SimpleCardDisplayable> SuccessStateView(
     imageIcon: ImageVector?,
     onClick: (T) -> Unit
 ) {
-    Column {
-        data.forEach { item ->
+    LazyColumn {
+        items(data) { item ->
             InfoCard(item = item, imageIcon = imageIcon) { item ->
                 onClick(item)
             }

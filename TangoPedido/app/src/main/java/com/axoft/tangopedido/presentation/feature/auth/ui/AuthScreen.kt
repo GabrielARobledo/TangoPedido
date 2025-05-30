@@ -30,7 +30,7 @@ fun LoginScreen(navController: NavHostController) {
         ControlText(ScreenLabels.Login)
         LoadItemCard(vendedorState) { itemSelected ->
             authViewModel.loginVendedor(itemSelected)
-            navController.navigate(AppNavigation.Home.route) {
+            navController.navigate(AppNavigation.Pedido.route) {
                 popUpTo(AppNavigation.Login.route) {
                     inclusive = true
                 }

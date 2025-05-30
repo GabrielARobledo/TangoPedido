@@ -3,11 +3,14 @@ package com.axoft.tangopedido.di
 import com.axoft.tangopedido.BuildConfig
 import com.axoft.tangopedido.data.remote.api.articulo.ArticuloClient
 import com.axoft.tangopedido.data.remote.api.cliente.ClienteClient
+import com.axoft.tangopedido.data.remote.api.pedido.PedidoClient
 import com.axoft.tangopedido.data.remote.api.vendedor.VendedorClient
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import okhttp3.Interceptor
+import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
@@ -33,10 +36,32 @@ import javax.inject.Singleton
 class RetrofitModule {
     @Provides
     @Singleton
-    fun provideRetrofit(): Retrofit {
+    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .baseUrl(BuildConfig.API_BASE_URL)
+            .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
+            .build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideHeaderInterceptor(): Interceptor {
+        return Interceptor { chain ->
+            val originalRequest = chain.request()
+            val requestWithHeaders = originalRequest.newBuilder()
+                .header("ApiAuthorization", BuildConfig.API_TOKEN)
+                .header("Company", BuildConfig.API_COMPANY.toString())
+                .build()
+            chain.proceed(requestWithHeaders)
+        }
+    }
+
+    @Provides
+    @Singleton
+    fun provideOkHttpClient(headerInterceptor: Interceptor): OkHttpClient {
+        return OkHttpClient.Builder()
+            .addInterceptor(headerInterceptor)
             .build()
     }
 
@@ -50,6 +75,12 @@ class RetrofitModule {
     @Singleton
     fun provideArticuloRequest(retrofit: Retrofit): ArticuloClient {
         return retrofit.create(ArticuloClient::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun providePedidoRequest(retrofit: Retrofit): PedidoClient {
+        return retrofit.create(PedidoClient::class.java)
     }
 
     @Provides

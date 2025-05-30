@@ -26,6 +26,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.axoft.tangopedido.presentation.common.ui.component.card.RenglonCard
+import com.axoft.tangopedido.presentation.common.ui.component.floating.FloatingActionAdd
 import com.axoft.tangopedido.presentation.common.ui.component.scaffold.LookupScaffold
 import com.axoft.tangopedido.presentation.common.ui.component.text.ControlText
 import com.axoft.tangopedido.presentation.common.utils.constant.ScreenLabels
@@ -51,7 +52,7 @@ fun RenglonScreen(navController: NavHostController) {
     LookupScaffold(
         navController = navController,
         pedidoViewModel = pedidoViewModel,
-        floatingActionButton = { RenglonFooter(navController) }
+        floatingActionButton = { FloatingActionAdd(navController, AppNavigation.Articulo) }
     ) {
         ControlText(ScreenLabels.Articulo)
         if (pedido.renglones.isEmpty()) {
@@ -82,20 +83,5 @@ fun RenglonScreen(navController: NavHostController) {
                 }
             }
         }
-    }
-}
-
-@Composable
-private fun RenglonFooter(navController: NavHostController) {
-    FloatingActionButton(
-        modifier = Modifier.clip(CircleShape),
-        containerColor = MaterialTheme.colorScheme.primary,
-        contentColor = Color.White,
-        onClick = { navController.navigate(AppNavigation.Articulo.route) }
-    ) {
-        Icon(
-            imageVector = Icons.Filled.Add,
-            contentDescription = "Add"
-        )
     }
 }

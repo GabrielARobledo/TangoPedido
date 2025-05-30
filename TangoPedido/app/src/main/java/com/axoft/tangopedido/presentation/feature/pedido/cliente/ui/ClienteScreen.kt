@@ -18,6 +18,7 @@ import com.axoft.tangopedido.presentation.common.ui.component.card.LoadItemCard
 import com.axoft.tangopedido.presentation.common.ui.component.scaffold.LookupScaffold
 import com.axoft.tangopedido.presentation.common.ui.component.text.ControlText
 import com.axoft.tangopedido.presentation.common.ui.component.textfield.CustomTextField
+import com.axoft.tangopedido.presentation.common.utils.constant.ScreenLabels
 import com.axoft.tangopedido.presentation.feature.pedido.cliente.viewmodel.ClienteViewModel
 import com.axoft.tangopedido.presentation.shared.ui.pedidoViewModel
 
@@ -39,7 +40,7 @@ fun ClienteScreen(navController: NavHostController) {
     LookupScaffold(navController, pedidoViewModel) {
         var searchText by remember { mutableStateOf("") }
 
-        ControlText("Cliente")
+        ControlText(ScreenLabels.Cliente)
         CustomTextField(label = "Buscar", value = searchText) { searchText = it }
         Spacer(modifier = Modifier.height(8.dp))
         LoadItemCard(state = clienteState, imageIcon = Icons.Default.Person) { itemSelected ->

@@ -9,10 +9,9 @@ package com.axoft.tangopedido.presentation.common.utils.constant
  */
 object ScreenLabels {
     const val Login = "Vendedor"
-    const val Home = "Inicio"
+    const val Pedido = "Pedido"
     const val Cliente = "Cliente"
     const val Articulo = "Artículo"
-    const val ArticuloEdit = "Edición artículo"
     const val Renglon = "Renglones"
     const val Promociones = "Promoción"
 }

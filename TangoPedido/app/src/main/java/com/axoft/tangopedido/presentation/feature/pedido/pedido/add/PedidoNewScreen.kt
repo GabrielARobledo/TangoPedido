@@ -1,4 +1,4 @@
-package com.axoft.tangopedido.presentation.feature.dashboard.home
+package com.axoft.tangopedido.presentation.feature.pedido.pedido.add
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -11,21 +11,8 @@ import com.axoft.tangopedido.presentation.common.utils.constant.ScreenLabels
 import com.axoft.tangopedido.presentation.feature.core.app.navigation.AppNavigation
 import com.axoft.tangopedido.presentation.shared.ui.pedidoViewModel
 
-/**
- * HomeScreen
- *
- * Composable que representa la pantalla principal (dashboard) de la aplicación,
- * mostrando opciones clave como selección de cliente, ingreso de renglones y acceso
- * a promociones. Usa AppScaffold para la estructura general y HomeToolbar
- * para mostrar información del vendedor autenticado.
- *
- * Navega hacia las pantallas correspondientes usando NavHostController al interactuar
- * con cada SelectCard.
- *
- * @param navController Controlador de navegación para gestionar los cambios de pantalla.
- */
 @Composable
-fun HomeScreen(navController: NavHostController) {
+fun PedidoNewScreen(navController: NavHostController) {
     val pedidoViewModel = pedidoViewModel()
     val pedido by pedidoViewModel.pedido.collectAsState()
 

@@ -1,5 +1,3 @@
-import org.gradle.kotlin.dsl.implementation
-
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -34,11 +32,21 @@ android {
             buildConfigField("String", "API_BASE_URL", "\"${property("API_BASE_URL_RELEASE")}\"")
             buildConfigField("String", "API_TOKEN", "\"${property("API_TOKEN_RELEASE")}\"")
             buildConfigField("int", "API_COMPANY", property("API_COMPANY_RELEASE").toString())
+            buildConfigField(
+                "boolean",
+                "LOGIN_REQUIRED",
+                property("LOGIN_REQUIRED_RELEASE").toString()
+            )
         }
         debug {
             buildConfigField("String", "API_BASE_URL", "\"${property("API_BASE_URL_DEBUG")}\"")
             buildConfigField("String", "API_TOKEN", "\"${property("API_TOKEN_DEBUG")}\"")
             buildConfigField("int", "API_COMPANY", property("API_COMPANY_DEBUG").toString())
+            buildConfigField(
+                "boolean",
+                "LOGIN_REQUIRED",
+                property("LOGIN_REQUIRED_DEBUG").toString()
+            )
         }
     }
     compileOptions {
@@ -55,53 +63,59 @@ android {
 }
 
 dependencies {
-    // Core Android & Kotlin extensions
+    //region Core & Extensions
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.navigation.compose)
+    //endregion
 
-    // Compose BOM para versiones alineadas de Compose
+    //region Jetpack Compose & UI
     implementation(platform(libs.androidx.compose.bom))
-
-    // Librerías UI Compose
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.runtime.livedata)
-
-    // Material
     implementation(libs.androidx.material.icons.extended)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.foundation)
+    //endregion
 
-
-    // Room
+    //region Room (Database)
     implementation(libs.androidx.room.runtime)
-    implementation(libs.transport.runtime)
-    implementation(libs.androidx.benchmark.common)
-    kapt(libs.androidx.room.compiler)
     implementation(libs.androidx.room.ktx)
+    kapt(libs.androidx.room.compiler)
+    //endregion
 
-    // Hilt
-    kapt(libs.hilt.compiler)
+    //region Dependency Injection (Hilt)
     implementation(libs.hilt.android)
     implementation(libs.androidx.hilt.navigation.compose)
+    kapt(libs.hilt.compiler)
+    //endregion
 
-    // Retrofit
+    //region Network (Retrofit)
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
+    //endregion
 
-    // Toolbar
-    implementation(libs.androidx.foundation)
+    //region Background & Transport
+    implementation(libs.transport.runtime)
+    //endregion
 
-    // Testing
+    //region Benchmark (if used)
+    implementation(libs.androidx.benchmark.common)
+    //endregion
+
+    //region Testing
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.ui.test.junit4)
+    //endregion
 
-    // Debug tools para Compose
+    //region Debug Tools
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    //endregion
 }
