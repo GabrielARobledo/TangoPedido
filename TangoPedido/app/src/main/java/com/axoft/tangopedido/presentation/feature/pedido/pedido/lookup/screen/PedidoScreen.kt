@@ -26,7 +26,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.axoft.tangopedido.presentation.common.ui.component.card.PedidoCard
 import com.axoft.tangopedido.presentation.common.ui.component.floating.FloatingActionAdd
-import com.axoft.tangopedido.presentation.common.ui.component.scaffold.LookupScaffold
+import com.axoft.tangopedido.presentation.common.ui.component.scaffold.HomeScaffold
 import com.axoft.tangopedido.presentation.common.ui.component.text.ControlText
 import com.axoft.tangopedido.presentation.common.utils.constant.ScreenLabels
 import com.axoft.tangopedido.presentation.common.utils.state.UiState
@@ -42,10 +42,10 @@ fun PedidoScreen(navController: NavHostController) {
     val pedidoViewModel: PedidoViewModel = hiltViewModel()
     val pedidosState by pedidoViewModel.pedidos.collectAsState()
 
-    LookupScaffold(
+    HomeScaffold(
         navController = navController,
         pedidoViewModel = pedidoAppViewModel,
-        useBackOnClick = false,
+        arrowBack = false,
         floatingActionButton = { FloatingActionAdd(navController, AppNavigation.NewPedido) }
     ) {
         ControlText(ScreenLabels.Pedido)

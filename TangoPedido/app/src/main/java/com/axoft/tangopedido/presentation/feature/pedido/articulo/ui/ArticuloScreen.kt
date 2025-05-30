@@ -2,7 +2,6 @@ package com.axoft.tangopedido.presentation.feature.pedido.articulo.ui
 
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.runtime.Composable
@@ -16,7 +15,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.axoft.tangopedido.presentation.common.ui.component.card.LoadItemCard
-import com.axoft.tangopedido.presentation.common.ui.component.scaffold.LookupScaffold
+import com.axoft.tangopedido.presentation.common.ui.component.scaffold.HomeScaffold
 import com.axoft.tangopedido.presentation.common.ui.component.text.ControlText
 import com.axoft.tangopedido.presentation.common.ui.component.textfield.CustomTextField
 import com.axoft.tangopedido.presentation.common.utils.constant.ScreenLabels
@@ -40,7 +39,7 @@ fun ArticuloScreen(navController: NavHostController) {
 
     var searchText by remember { mutableStateOf("") }
 
-    LookupScaffold(navController, pedidoViewModel) {
+    HomeScaffold(navController, pedidoViewModel) {
         ControlText(ScreenLabels.Articulo)
         CustomTextField(label = "Buscar", value = searchText) { searchText = it }
         Spacer(modifier = Modifier.height(8.dp))

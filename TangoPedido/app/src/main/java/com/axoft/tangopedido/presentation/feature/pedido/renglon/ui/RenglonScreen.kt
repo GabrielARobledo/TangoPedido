@@ -8,11 +8,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ShoppingCart
-import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -21,13 +18,12 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.axoft.tangopedido.presentation.common.ui.component.card.RenglonCard
 import com.axoft.tangopedido.presentation.common.ui.component.floating.FloatingActionAdd
-import com.axoft.tangopedido.presentation.common.ui.component.scaffold.LookupScaffold
+import com.axoft.tangopedido.presentation.common.ui.component.scaffold.HomeScaffold
 import com.axoft.tangopedido.presentation.common.ui.component.text.ControlText
 import com.axoft.tangopedido.presentation.common.utils.constant.ScreenLabels
 import com.axoft.tangopedido.presentation.feature.core.app.navigation.AppNavigation
@@ -49,12 +45,11 @@ fun RenglonScreen(navController: NavHostController) {
     val pedidoViewModel = pedidoViewModel()
     val pedido by pedidoViewModel.pedido.collectAsState()
 
-    LookupScaffold(
+    HomeScaffold(
         navController = navController,
         pedidoViewModel = pedidoViewModel,
         floatingActionButton = { FloatingActionAdd(navController, AppNavigation.Articulo) }
     ) {
-        ControlText(ScreenLabels.Articulo)
         if (pedido.renglones.isEmpty()) {
             Column(
                 modifier = Modifier.fillMaxSize(),
@@ -75,6 +70,7 @@ fun RenglonScreen(navController: NavHostController) {
                 )
             }
         } else {
+            ControlText(ScreenLabels.Articulo)
             LazyColumn {
                 items(pedido.renglones) { renglon ->
                     RenglonCard(renglonUi = renglon) {

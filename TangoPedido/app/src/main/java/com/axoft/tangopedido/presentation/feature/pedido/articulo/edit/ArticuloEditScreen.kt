@@ -2,7 +2,7 @@ package com.axoft.tangopedido.presentation.feature.pedido.articulo.edit
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
-import com.axoft.tangopedido.presentation.common.ui.component.scaffold.LookupScaffold
+import com.axoft.tangopedido.presentation.common.ui.component.scaffold.HomeScaffold
 import com.axoft.tangopedido.presentation.shared.ui.pedidoViewModel
 
 /**
@@ -20,7 +20,7 @@ import com.axoft.tangopedido.presentation.shared.ui.pedidoViewModel
 fun ArticuloEditScreen(navController: NavHostController) {
     val pedidoViewModel = pedidoViewModel()
 
-    LookupScaffold(navController, pedidoViewModel) {
+    HomeScaffold(navController, pedidoViewModel) {
 
     }
 }

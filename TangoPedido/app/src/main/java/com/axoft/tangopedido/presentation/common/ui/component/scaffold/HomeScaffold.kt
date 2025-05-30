@@ -16,7 +16,7 @@ import com.axoft.tangopedido.presentation.shared.viewmodel.PedidoViewModel
  * Sirve para evitar repetir la misma estructura en cada pantalla relacionada a pedidos.
  */
 @Composable
-fun LookupScaffold(
+fun HomeScaffold(
     navController: NavHostController,
     pedidoViewModel: PedidoViewModel,
     arrowBack: Boolean = true,

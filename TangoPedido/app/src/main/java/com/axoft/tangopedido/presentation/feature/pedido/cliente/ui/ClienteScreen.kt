@@ -15,7 +15,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.axoft.tangopedido.presentation.common.ui.component.card.LoadItemCard
-import com.axoft.tangopedido.presentation.common.ui.component.scaffold.LookupScaffold
+import com.axoft.tangopedido.presentation.common.ui.component.scaffold.HomeScaffold
 import com.axoft.tangopedido.presentation.common.ui.component.text.ControlText
 import com.axoft.tangopedido.presentation.common.ui.component.textfield.CustomTextField
 import com.axoft.tangopedido.presentation.common.utils.constant.ScreenLabels
@@ -37,7 +37,7 @@ fun ClienteScreen(navController: NavHostController) {
     val clienteViewModel: ClienteViewModel = hiltViewModel()
     val clienteState by clienteViewModel.clientes.collectAsState()
 
-    LookupScaffold(navController, pedidoViewModel) {
+    HomeScaffold(navController, pedidoViewModel) {
         var searchText by remember { mutableStateOf("") }
 
         ControlText(ScreenLabels.Cliente)

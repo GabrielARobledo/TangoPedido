@@ -51,7 +51,7 @@ private fun PedidoCardBody(pedidoUi: PedidoUi) {
         Spacer(modifier = Modifier.height(4.dp))
 
         Text(
-            text = "Cliente: ${pedidoUi.razonSocialCliente}",
+            text = "${pedidoUi.codigoCliente} - ${pedidoUi.razonSocialCliente}",
             style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant
         )
@@ -62,20 +62,7 @@ private fun PedidoCardBody(pedidoUi: PedidoUi) {
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier.fillMaxWidth()
         ) {
-            Column {
-                Text(
-                    text = "Código Cliente",
-                    style = MaterialTheme.typography.labelSmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-                Text(
-                    text = pedidoUi.codigoCliente,
-                    style = MaterialTheme.typography.bodyMedium
-                )
-            }
-
             Spacer(modifier = Modifier.weight(1f))
-
             Column(horizontalAlignment = Alignment.End) {
                 Text(
                     text = "Total",

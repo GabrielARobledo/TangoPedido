@@ -2,6 +2,7 @@ package com.axoft.tangopedido.presentation.common.ui.component.card
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
@@ -43,6 +44,7 @@ private fun SelectCardBody(value: String, valueSelected: String? = null) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
+            .height(50.dp)
             .padding(horizontal = 16.dp, vertical = 8.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
