@@ -5,10 +5,10 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
-import com.axoft.tangopedido.presentation.common.component.card.LoadItemCard
-import com.axoft.tangopedido.presentation.common.component.text.ControlText
-import com.axoft.tangopedido.presentation.common.scaffold.AppScaffold
-import com.axoft.tangopedido.presentation.feature.main.AppNavigation
+import com.axoft.tangopedido.presentation.common.ui.component.card.LoadItemCard
+import com.axoft.tangopedido.presentation.common.ui.component.scaffold.AppScaffold
+import com.axoft.tangopedido.presentation.common.ui.component.text.ControlText
+import com.axoft.tangopedido.presentation.feature.app.navigation.AppNavigation
 
 @Composable
 fun LoginScreen(navController: NavHostController) {

@@ -2,12 +2,12 @@ package com.axoft.tangopedido.presentation.feature.articulo
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.axoft.tangopedido.domain.model.Articulo
+import com.axoft.tangopedido.domain.model.stock.Articulo
 import com.axoft.tangopedido.domain.usecase.articulo.GetArticulosUseCase
-import com.axoft.tangopedido.presentation.constant.ErrorConst.ERROR_MESSAGE
-import com.axoft.tangopedido.presentation.mapper.toSimpleItem
-import com.axoft.tangopedido.presentation.model.ItemCard
-import com.axoft.tangopedido.presentation.uistate.UiState
+import com.axoft.tangopedido.presentation.common.utils.constant.ErrorConst.ERROR_MESSAGE
+import com.axoft.tangopedido.presentation.common.utils.mapper.toSimpleItem
+import com.axoft.tangopedido.presentation.model.view.ItemCard
+import com.axoft.tangopedido.presentation.common.utils.state.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

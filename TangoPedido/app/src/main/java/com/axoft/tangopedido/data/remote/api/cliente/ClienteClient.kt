@@ -2,7 +2,7 @@ package com.axoft.tangopedido.data.remote.api.cliente
 
 import com.axoft.tangopedido.BuildConfig
 import com.axoft.tangopedido.data.remote.dto.ClienteResponse
-import com.axoft.tangopedido.data.remote.utils.HttpRoutes
+import com.axoft.tangopedido.data.remote.network.HttpRoutes
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Header

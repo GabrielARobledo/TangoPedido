@@ -12,11 +12,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
-import com.axoft.tangopedido.presentation.common.component.card.LoadItemCard
-import com.axoft.tangopedido.presentation.common.component.text.ControlText
-import com.axoft.tangopedido.presentation.common.component.textfield.CustomTextField
-import com.axoft.tangopedido.presentation.common.scaffold.LookupScaffold
-import com.axoft.tangopedido.presentation.feature.pedido.pedidoViewModel
+import com.axoft.tangopedido.presentation.common.ui.component.card.LoadItemCard
+import com.axoft.tangopedido.presentation.common.ui.component.scaffold.LookupScaffold
+import com.axoft.tangopedido.presentation.common.ui.component.text.ControlText
+import com.axoft.tangopedido.presentation.common.ui.component.textfield.CustomTextField
+import com.axoft.tangopedido.presentation.feature.pedido.ui.pedidoViewModel
 
 @Composable
 fun ArticuloScreen(navController: NavHostController) {

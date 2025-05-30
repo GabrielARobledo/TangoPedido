@@ -4,11 +4,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.navigation.NavHostController
-import com.axoft.tangopedido.presentation.common.component.card.SelectCard
-import com.axoft.tangopedido.presentation.common.scaffold.AppScaffold
-import com.axoft.tangopedido.presentation.common.toolbar.HomeToolbar
-import com.axoft.tangopedido.presentation.feature.main.AppNavigation
-import com.axoft.tangopedido.presentation.feature.pedido.pedidoViewModel
+import com.axoft.tangopedido.presentation.common.ui.component.card.SelectCard
+import com.axoft.tangopedido.presentation.common.ui.component.scaffold.AppScaffold
+import com.axoft.tangopedido.presentation.common.ui.component.toolbar.HomeToolbar
+import com.axoft.tangopedido.presentation.feature.app.navigation.AppNavigation
+import com.axoft.tangopedido.presentation.feature.pedido.ui.pedidoViewModel
 
 @Composable
 fun HomeScreen(navController: NavHostController) {

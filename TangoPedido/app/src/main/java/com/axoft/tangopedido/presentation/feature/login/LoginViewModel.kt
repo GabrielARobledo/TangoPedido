@@ -2,14 +2,12 @@ package com.axoft.tangopedido.presentation.feature.login
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.axoft.tangopedido.data.local.entities.SettingEntity
-import com.axoft.tangopedido.data.repository.SessionRepository
-import com.axoft.tangopedido.data.repository.SettingRepository
+import com.axoft.tangopedido.data.repository.app.SessionRepository
 import com.axoft.tangopedido.domain.usecase.vendedor.GetVendedoresUseCase
-import com.axoft.tangopedido.presentation.constant.ErrorConst.ERROR_MESSAGE
-import com.axoft.tangopedido.presentation.mapper.toSimpleItem
-import com.axoft.tangopedido.presentation.model.ItemCard
-import com.axoft.tangopedido.presentation.uistate.UiState
+import com.axoft.tangopedido.presentation.common.utils.constant.ErrorConst.ERROR_MESSAGE
+import com.axoft.tangopedido.presentation.common.utils.mapper.toSimpleItem
+import com.axoft.tangopedido.presentation.model.view.ItemCard
+import com.axoft.tangopedido.presentation.common.utils.state.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
