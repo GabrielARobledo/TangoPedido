@@ -9,11 +9,11 @@ plugins {
 }
 
 android {
-    namespace = "com.axoft.tangopedidos"
+    namespace = "com.axoft.axmobilepedidos"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.axoft.tangopedidos"
+        applicationId = "com.axoft.axmobilepedidos"
         minSdk = 24
         targetSdk = 35
         versionCode = 1
